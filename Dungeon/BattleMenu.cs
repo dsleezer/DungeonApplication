@@ -11,7 +11,7 @@
 
                 do//encounter loop
                 {
-                    //TODO CreateMonster()
+                    //TODO CreateEnemy()
                     //TODO CreateRoom()
 
                     bool loopMenu = true;
@@ -22,7 +22,6 @@
 
                         //TODO display the monster
                         //TODO display the room
-
 
 
                         Console.WriteLine("1) Attack\n" +
