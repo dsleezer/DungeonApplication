@@ -7,12 +7,12 @@
         /// </summary>
         /// <param name="level">Adds difficulty to enemies based on player level.</param>
         /// <param name="area">Adds difficulty to enemies based on the area.</param>
-        public static void EnemySelector(int level, int area)
+        public static string EnemySelector(int level, int area)
         {
-            Random enemySelectGen = new Random(8);
+            Random enemySelectGen = new Random();
 
             int enemySelect = enemySelectGen.Next(100);
-
+            
             string[] enemyList =
             {
                 "Bandit",
@@ -97,36 +97,6 @@
                 enemyStats[5] = enemySelectGen.Next();//mdefense
                 enemyStats[6] = enemySelectGen.Next();//attack priority
             }
-            else if (activeEnemy == "Bandit")//bandit stat gen
-            {
-                enemyStats[0] = enemySelectGen.Next();//health
-                enemyStats[1] = enemySelectGen.Next();//str
-                enemyStats[2] = enemySelectGen.Next();//int
-                enemyStats[3] = enemySelectGen.Next();//dex
-                enemyStats[4] = enemySelectGen.Next();//defense
-                enemyStats[5] = enemySelectGen.Next();//mdefense
-                enemyStats[6] = enemySelectGen.Next();//attack priority
-            }
-            else if (activeEnemy == "Bandit")//bandit stat gen
-            {
-                enemyStats[0] = enemySelectGen.Next();//health
-                enemyStats[1] = enemySelectGen.Next();//str
-                enemyStats[2] = enemySelectGen.Next();//int
-                enemyStats[3] = enemySelectGen.Next();//dex
-                enemyStats[4] = enemySelectGen.Next();//defense
-                enemyStats[5] = enemySelectGen.Next();//mdefense
-                enemyStats[6] = enemySelectGen.Next();//attack priority
-            }
-            else if (activeEnemy == "Bandit")//bandit stat gen
-            {
-                enemyStats[0] = enemySelectGen.Next();//health
-                enemyStats[1] = enemySelectGen.Next();//str
-                enemyStats[2] = enemySelectGen.Next();//int
-                enemyStats[3] = enemySelectGen.Next();//dex
-                enemyStats[4] = enemySelectGen.Next();//defense
-                enemyStats[5] = enemySelectGen.Next();//mdefense
-                enemyStats[6] = enemySelectGen.Next();//attack priority
-            }
 
 
 
@@ -135,16 +105,8 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
+            
+            return activeEnemy;
         }
 
 
