@@ -1,9 +1,15 @@
-﻿namespace Dungeon
+﻿using DungeonLibrary;
+
+
+
+namespace Dungeon
 {
     class BattleMenu
     {
         static void Main(string[] args)
         {
+            //TODO: Create a Player object to track info/stats
+            
             bool loopGame = true;
             do//game loop
             {
@@ -11,8 +17,8 @@
 
                 do//encounter loop
                 {
-                    //TODO CreateEnemy()
-                    //TODO CreateRoom()
+                    //TODO: CreateEnemy()
+                    Console.WriteLine(RoomGenerator.RoomCreator(0));
 
                     bool loopMenu = true;
 
@@ -20,8 +26,8 @@
                     {
                         Console.Clear();
 
-                        //TODO display the monster
-                        //TODO display the room
+                        //TODO: display the monster
+                        //TODO: display the room
 
 
                         Console.WriteLine("1) Attack\n" +
