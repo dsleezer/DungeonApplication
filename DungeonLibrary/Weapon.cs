@@ -15,6 +15,7 @@ namespace DungeonLibrary
         private string _name;
         private int _bonusHitChance;
         private bool _isTwoHanded;
+        private WeaponType _weaponType;
 
         //PROPERTIES
 
@@ -22,6 +23,7 @@ namespace DungeonLibrary
         public string Name { get { return _name; } set { _name = value; } }
         public int BonusHitChance { get { return _bonusHitChance; } set { _bonusHitChance = value; } }
         public bool IsTwoHanded { get { return _isTwoHanded; } set { _isTwoHanded = value; } }
+        public WeaponType WeaponType { get { return _weaponType; } set { _weaponType = value; } }
         public int MinDamage
         {
             get { return _minDamage; }
@@ -41,19 +43,20 @@ namespace DungeonLibrary
 
         //CONSTRUCTORS
 
-        public Weapon(int minDamage, int maxDamage, string name, int bonusHitChance, bool isTwoHanded)
+        public Weapon(int minDamage, int maxDamage, string name, int bonusHitChance, bool isTwoHanded, WeaponType type)
         {
             MinDamage = minDamage;
             MaxDamage = maxDamage;
             Name = name;
             BonusHitChance = bonusHitChance;
             IsTwoHanded = isTwoHanded;
+            WeaponType = type;
         }
 
         //METHODS
         public override string ToString()
         {
-            return string.Format($"Name: {Name}\nDamage: {MinDamage}-{MaxDamage}\n" +
+            return string.Format($"Name: {Name}\nType: {WeaponType}\nDamage: {MinDamage}-{MaxDamage}\n" +
                 $"Bonus: {BonusHitChance}\n{(IsTwoHanded == true ? "Two-Handed" : "One-Handed")}");
         }
 
