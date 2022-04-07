@@ -14,7 +14,7 @@ namespace Dungeon
 
             Console.WriteLine(c1);
 
-            Weapon w1 = new Weapon(2, 12, "Greatsword", 3, true);
+            Weapon w1 = new Weapon(2, 12, "Greatsword", 3, true, WeaponType.Greatsword);
 
             Console.WriteLine(w1);
 
