@@ -10,6 +10,9 @@ namespace Dungeon
     {
         static void Main(string[] args)
         {
+            #region Character Creation
+
+            #region Asset Initialization
 
             Weapon w1 = new Weapon(2, 12, "Greatsword", 3, true, WeaponType.Greatsword);
 
@@ -32,13 +35,16 @@ namespace Dungeon
 
             List<Race> races = new List<Race> { halforc, elf, gnome, human, dwarf, halfelf, tiefling, dragonborn };
 
-            //Character Creation
 
-            Player player1 = new Player();
-            player1.Strength = 10;
-            player1.Intelligence = 10;
-            player1.Dexterity = 10;
-            player1.Constitution = 10;
+            //Character Creation
+            PlayerClass pClass = new PlayerClass();
+            Race pRace = new Race();
+            string pName = "";
+
+            #endregion
+
+            #region Class Selection
+
 
             bool classMenu = true;
             do
@@ -51,177 +57,202 @@ namespace Dungeon
                     Console.WriteLine(item);
                 }
                 Console.WriteLine("1) Warrior\n2) Wizard\n3) Rogue\n4) Ranger\n");
-
+                bool menuSuccess = true;
                 string classSelection = "";
-                string classConfirmation"";
+                string classConfirmation = "";
                 classSelection = Console.ReadKey(true).Key.ToString();
 
                 switch (classSelection)
                 {
                     case "D1":
                     case "NumPad1":
-                        Console.WriteLine($"You chose Warrior.\n{warrior}\nAre you sure? Y/N");
-                        classConfirmation = Console.ReadKey(true).Key.ToString();
-                        if (classConfirmation == "Y")
-                        {
-                            player1.PClass = warrior;
-                            classMenu = !classMenu;
-                        }
-                        else { }
+                        pClass = warrior;
                         break;
                     case "D2":
                     case "NumPad2":
-                        Console.WriteLine($"You chose Warrior.\n{wizard}\nAre you sure? Y/N");
-                        classConfirmation = Console.ReadKey(true).Key.ToString();
-                        if (classConfirmation == "Y")
-                        {
-                            player1.PClass = wizard;
-                            classMenu = !classMenu;
-                        }
-                        else { }
+                        pClass = wizard;
                         break;
                     case "D3":
                     case "NumPad3":
-                        Console.WriteLine($"You chose Warrior.\n{rogue}\nAre you sure? Y/N");
-                        classConfirmation = Console.ReadKey(true).Key.ToString();
-                        if (classConfirmation == "Y")
-                        {
-                            player1.PClass = rogue;
-                            classMenu = !classMenu;
-                        }
-                        else { }
+                        pClass = rogue;
                         break;
                     case "D4":
                     case "NumPad4":
-                        Console.WriteLine($"You chose Warrior.\n{ranger}\nAre you sure? Y/N");
-                        classConfirmation = Console.ReadKey(true).Key.ToString();
-                        if (classConfirmation == "Y")
+                        pClass = ranger;
+                        break;
+                    default:
+                        Console.WriteLine("Input not valid...");
+                        menuSuccess = !menuSuccess;
+                        break;
+                        if (menuSuccess == true)
                         {
-                            player1.PClass = ranger;
-                            classMenu = !classMenu;
+                            Console.WriteLine($"You chose {pClass.Name}.\n{pClass}\nAre you sure? Y/N");
+                            classConfirmation = Console.ReadKey(true).Key.ToString();
+                            if (classConfirmation == "Y")
+                            {
+                                classMenu = !classMenu;
+                            }
+                            else { }
+                        }
+                } while (classMenu) ;
+
+                #endregion
+
+                #region Race Selection
+
+
+                bool raceMenu = true;
+                do
+                {
+                    Console.WriteLine("Choose your Race\n");
+                    foreach (var item in races)
+                    {
+
+                        Console.WriteLine(item);
+                    }
+                    Console.WriteLine("1) Half-Orc\t\t2) Elf\n3) Halfling\t\t4) Gnome\n5) Human\t\t6) Dwarf\n7) Half-Elf\t\t8)Tiefling\n9) Dragonborn");
+
+                    string raceSelection = "";
+                    string raceConfirmation = "";
+                    bool menuSuccess = true;
+                    raceSelection = Console.ReadKey(true).Key.ToString();
+
+                    switch (raceSelection)
+                    {
+                        case "D1":
+                        case "NumPad1":
+                            pRace = halforc;
+                            break;
+                        case "D2":
+                        case "NumPad2":
+                            pRace = elf;
+                            break;
+                        case "D3":
+                        case "NumPad3":
+                            pRace = halfling;
+                            break;
+                        case "D4":
+                        case "NumPad4":
+                            pRace = gnome;
+                            break;
+                        case "D5":
+                        case "NumPad5":
+                            pRace = human;
+                            break;
+                        case "D6":
+                        case "NumPad6":
+                            pRace = dwarf;
+                            break;
+                        case "D7":
+                        case "NumPad7":
+                            pRace = halfelf;
+                            break;
+                        case "D8":
+                        case "NumPad8":
+                            pRace = tiefling;
+                            break;
+                        case "D9":
+                        case "NumPad9":
+                            pRace = dragonborn;
+                            break;
+                        default:
+                            Console.WriteLine("Input not valid...");
+                            menuSuccess = !menuSuccess;
+                            break;
+                    }
+                    if (menuSuccess == true)
+                    {
+                        Console.WriteLine($"You chose {pRace.Name}.\n{pRace}\nAre you sure? Y/N");
+                        raceConfirmation = Console.ReadKey(true).Key.ToString();
+                        if (raceConfirmation == "Y")
+                        {
+                            raceMenu = !raceMenu;
                         }
                         else { }
-                        break;
-                    default:
-                        Console.WriteLine("Input not valid...");
-                        break;
-                } 
-            } while (classMenu);
+                    }
+                } while (raceMenu);
 
-            bool raceMenu = true;
-            do
-            {
-                Console.WriteLine("Choose your Race\n");
-                foreach (var item in races)
+                #endregion
+
+                #region Name Selection
+
+
+                bool nameMenu = true;
+                string nameConfirmation = "";
+                do
                 {
+                    Console.WriteLine("What is your name?");
+                    pName = Console.ReadLine().ToString();
+                    Console.WriteLine($"Your name is {pName}.\n\n Do you want to keep this? Y/N");
 
-                    Console.WriteLine(item);
-                }
-                Console.WriteLine("1) Half-Orc\t\t2) Elf\n3) Halfling\t\t4) Gnome\n5) Human\t\t6) Dwarf\n7) Half-Elf\t\t8)Tiefling\n9) Dragonborn");
+                    nameConfirmation = Console.ReadKey(true).Key.ToString();
+                    if (nameConfirmation == "Y")
+                    {
+                        nameMenu = !nameMenu;
+                    }
+                    else { }
+                } while (nameMenu);
 
-                string raceSelection = "";
-                raceSelection = Console.ReadKey(true).Key.ToString();
+                #endregion
 
-                switch (raceSelection)
-                {
-                    case "D1":
-                    case "NumPad1":
-                        player1.PRace = halforc;
-                        raceMenu = !raceMenu;
-                        break;
-                    case "D2":
-                    case "NumPad2":
-                        player1.PRace = elf;
-                        raceMenu = !raceMenu;
-                        break;
-                    case "D3":
-                    case "NumPad3":
-                        player1.PRace = halfling;
-                        raceMenu = !raceMenu;
-                        break;
-                    case "D4":
-                    case "NumPad4":
-                        player1.PRace = gnome;
-                        raceMenu = !raceMenu;
-                        break;
-                    case "D5":
-                    case "NumPad5":
-                        player1.PRace = human;
-                        raceMenu = !raceMenu;
-                        break;
-                    case "D6":
-                    case "NumPad6":
-                        player1.PRace = dwarf;
-                        raceMenu = !raceMenu;
-                        break;
-                    case "D7":
-                    case "NumPad7":
-                        player1.PRace = halfelf;
-                        raceMenu = !raceMenu;
-                        break;
-                    case "D8":
-                    case "NumPad8":
-                        player1.PRace = tiefling;
-                        raceMenu = !raceMenu;
-                        break;
-                    case "D9":
-                    case "NumPad9":
-                        player1.PRace = dragonborn;
-                        raceMenu = !raceMenu;
-                        break;
-                    default:
-                        Console.WriteLine("Input not valid...");
-                        break;
-                }
-            } while (raceMenu);
-            Console.WriteLine(player1);
+                Player player1 = new Player(pName, pClass, pRace, 10, 10, 10, 10);
 
 
-
-            //Player player1 = new Player("Warrior", warrior, halforc, w1, 10, 10, 10, 10);
-            //Player player2 = new Player("wizard", wizard, halforc, w1, 10, 10, 10, 10);
-            //Player player3 = new Player("rogue", rogue, halforc, w1, 10, 10, 10, 10);
-            //Player player4 = new Player("ranger", ranger, halforc, w1, 10, 10, 10, 10);
+                Console.WriteLine(player1);
 
 
-            //Console.WriteLine(player1);
-            //Console.WriteLine(player2);
-            //Console.WriteLine(player3);
-            //Console.WriteLine(player4);
+                #endregion
 
-            //Elf,
-            //Halfling,
-            //Gnome,
-            //Human,
-            //Orc,
-            //Dwarf,
-            //HalfElf,
-            //Tiefling,
-            //Dragonborn
-
-
-
-            //Character c1 = new Character("Tain", 20, 20, 20, 20, 20);
-
-            //Console.WriteLine(c1);
-
-
-            //Console.WriteLine(w1);
-
-            //int life = 0;
-            //do
-            //{
-            //    do
-            //    {
-            //        life++;
-
-            //    } while (false);
-            //    Console.WriteLine(life);
-            //} while (false);
+                //int score = 1
 
 
 
 
-        }
+
+                //Player player1 = new Player("Warrior", warrior, halforc, w1, 10, 10, 10, 10);
+                //Player player2 = new Player("wizard", wizard, halforc, w1, 10, 10, 10, 10);
+                //Player player3 = new Player("rogue", rogue, halforc, w1, 10, 10, 10, 10);
+                //Player player4 = new Player("ranger", ranger, halforc, w1, 10, 10, 10, 10);
+
+
+                //Console.WriteLine(player1);
+                //Console.WriteLine(player2);
+                //Console.WriteLine(player3);
+                //Console.WriteLine(player4);
+
+                //Elf,
+                //Halfling,
+                //Gnome,
+                //Human,
+                //Orc,
+                //Dwarf,
+                //HalfElf,
+                //Tiefling,
+                //Dragonborn
+
+
+
+                //Character c1 = new Character("Tain", 20, 20, 20, 20, 20);
+
+                //Console.WriteLine(c1);
+
+
+                //Console.WriteLine(w1);
+
+                //int life = 0;
+                //do
+                //{
+                //    do
+                //    {
+                //        life++;
+
+                //    } while (false);
+                //    Console.WriteLine(life);
+                //} while (false);
+
+
+
+
+            }
     }
-}
+    }

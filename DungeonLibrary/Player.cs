@@ -24,13 +24,13 @@ namespace DungeonLibrary
         public PlayerClass PClass { get; set; }
         public Race PRace { get; set; }
         public Weapon EquippedWeapon { get; set; }
-        public int Armor 
-        { 
-            get { return _armor; } 
-            set 
+        public int Armor
+        {
+            get { return _armor; }
+            set
             {
                 _armor = value + (Dexterity - 10) + (Strength - 10);
-            } 
+            }
         }
         public int MaxHealth
         {
@@ -48,14 +48,14 @@ namespace DungeonLibrary
                 _currentHealth = value + (PClass.HealthModifier * ((Constitution - 10) / 2));
             }
         }
-        
+
         //CONSTRUCTORS
-        public Player(string name, PlayerClass pClass, Race pRace, Weapon eqWeapon, int strength, int intelligence, int dexterity, int constitution) : base(name, strength, intelligence, dexterity, constitution)
+        public Player(string name, PlayerClass pClass, Race pRace, int strength, int intelligence, int dexterity, int constitution) : base(name, strength, intelligence, dexterity, constitution)
         {
             Name = name;
             PClass = pClass;
             PRace = pRace;
-            EquippedWeapon = eqWeapon;
+            EquippedWeapon = pClass.EqWeapon;
             Strength = strength + pClass.Strength + pRace.Strength;
             Intelligence = intelligence + pClass.Intelligence + pRace.Intelligence;
             Dexterity = dexterity + pClass.Dexterity + pRace.Dexterity;
@@ -72,23 +72,23 @@ namespace DungeonLibrary
         Random randomNbrGen = new Random();
         public override int CalcDamage()
         {
-            int roll = randomNbrGen.Next(1, 21);
+            int roll = randomNbrGen.Next(EquippedWeapon.MinDamage, EquippedWeapon.MaxDamage + 1);
 
             if (PClass.Name.ToLower() == "warrior")
             {
-                return randomNbrGen.Next(EquippedWeapon.MinDamage, EquippedWeapon.MaxDamage) + ((Strength - 10) / 2);
+                return roll + ((Strength - 10) / 2);
             }
             else if (PClass.Name.ToLower() == "wizard")
             {
-                return randomNbrGen.Next(EquippedWeapon.MinDamage, EquippedWeapon.MaxDamage) + ((Intelligence - 10) / 2);
+                return roll + ((Intelligence - 10) / 2);
             }
             else if (PClass.Name.ToLower() == "rogue")
             {
-                return randomNbrGen.Next(EquippedWeapon.MinDamage, EquippedWeapon.MaxDamage) + ((Dexterity - 10) / 2);
+                return roll + ((Dexterity - 10) / 2);
             }
             else if (PClass.Name.ToLower() == "ranger")
             {
-                return randomNbrGen.Next(EquippedWeapon.MinDamage, EquippedWeapon.MaxDamage) + ((Dexterity - 10) / 2);
+                return roll + ((Dexterity - 10) / 2);
             }
             else
             {
@@ -103,15 +103,15 @@ namespace DungeonLibrary
             {
                 return roll + EquippedWeapon.BonusHitChance + ((Strength - 10) / 2);
             }
-            else if(PClass.Name.ToLower() == "wizard")
+            else if (PClass.Name.ToLower() == "wizard")
             {
                 return roll + EquippedWeapon.BonusHitChance + ((Intelligence - 10) / 2);
             }
-            else if(PClass.Name.ToLower() == "rogue")
+            else if (PClass.Name.ToLower() == "rogue")
             {
                 return roll + EquippedWeapon.BonusHitChance + ((Dexterity - 10) / 2);
             }
-            else if(PClass.Name.ToLower() == "ranger")
+            else if (PClass.Name.ToLower() == "ranger")
             {
                 return roll + EquippedWeapon.BonusHitChance + ((Dexterity - 10) / 2);
             }
