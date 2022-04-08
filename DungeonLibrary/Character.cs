@@ -11,97 +11,46 @@ namespace DungeonLibrary
         //FIELDS
 
         private string _name;
-        private int _hitChance;
-        private int _block;
-        private int _maxLife;
-        private int _life;
+        private int _strength;
+        private int _intelligence;
+        private int _dexterity;
+        private int _constitution;
+
 
         //PROPERTIES
         public string Name { get { return _name; } set { _name = value; } }
-        public int HitChance { get { return _hitChance; } set { _hitChance = value; } }
-        public int Block { get { return _block; } set { _block = value; } }
-        public int MaxLife { get { return _maxLife; } set { _maxLife = value; } }
-        public int Life
-        {
-            get { return _life; }
+        public int Strength { get { return _strength; } set { _strength = value; } }
+        public int Intelligence { get { return _intelligence ; } set { _intelligence = value; } }
+        public int Dexterity { get { return _dexterity ; } set { _dexterity = value; } }
+        public int Constitution { get { return _constitution; } set { _constitution = value; } }
 
-            set
-            {
-                if (value <= MaxLife)
-                {
-                    _life = value;
-                }
-                else
-                {
-                    _life = MaxLife;
-                }
-
-            }
-        }
 
 
         //CONSTRUCTORS
-        public Character(string name, int hitChance, int block, int maxLife, int life)
+        public Character(string name, int strength, int intelligence, int dexterity, int constitution)
         {
             Name = name;
-            HitChance = hitChance;
-            Block = block;
-            MaxLife = maxLife;
-            Life = life;
+            Strength = strength;
+            Intelligence = intelligence;
+            Dexterity = dexterity;
+            Constitution = constitution;
         }
-
+        public Character() { }
 
         //METHODS
 
-        public int CalcBlock()
+        public virtual int CalcBlock()
         {
-            return Block;
+            int blockChance = 10 + Dexterity;
+            return blockChance;
         }
-        public int CalcHitChance()
-        {
-            return HitChance;
-        }
-        public int CalcDamage()
+        public virtual int CalcHitChance()
         {
             return 0;
         }
-
-        public override string ToString()
+        public virtual int CalcDamage()
         {
-
-            return string.Format(
-                
-                $"Name: {Name}\nHit Chance: {HitChance}\n" +
-                $"Block: {Block}\nMax Life: {MaxLife}\nCurrent Life: {Life}");
-
-
-
-
-
-
-
-
-
-
-            //@"╔═══════════════════════╗" + "\n" +
-            //@"║.......................║" + "\n" +
-            //@"║                       ║" + "\n" +
-            //@"║           .           ║" + "\n" +
-            //@"╠═══════════════════════╣" + "\n" +
-            //@"║ Health:   .           ║" + "\n" +
-            //@"║ Hit Chance:           ║" + "\n" +
-            //@"║ Block:                ║" + "\n" +
-            //@"║                       ║" + "\n" +
-            //@"║                       ║" + "\n" +
-            //@"║                       ║" + "\n" +
-            //@"║                       ║" + "\n" +
-            //@"║                       ║" + "\n" +
-            //@"║                       ║" + "\n" +
-            //@"║                       ║" + "\n" +
-            //@"║                       ║" + "\n" +
-            //@"║                       ║" + "\n" +
-            //@"╚═══════════════════════╝");
+            return 0;
         }
-
     }
 }
