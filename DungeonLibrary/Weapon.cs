@@ -40,7 +40,6 @@ namespace DungeonLibrary
             }
         }
 
-
         //CONSTRUCTORS
 
         public Weapon(int minDamage, int maxDamage, string name, int bonusHitChance, bool isTwoHanded, WeaponType type)
