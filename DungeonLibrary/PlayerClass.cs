@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonLibrary
 {
-    public class Race
+    public class PlayerClass
     {
         //FIELDS
         private string _name;
@@ -14,7 +14,9 @@ namespace DungeonLibrary
         private int _intelligence;
         private int _dexterity;
         private int _constitution;
+        private int _healthModifier;
         private string _description;
+        private Weapon _eqWeapon;
 
         //PROPERTIES
         public string Name { get { return _name; } set { _name = value; } }
@@ -22,29 +24,32 @@ namespace DungeonLibrary
         public int Intelligence { get { return _intelligence; } set { _intelligence = value; } }
         public int Dexterity { get { return _dexterity; } set { _dexterity = value; } }
         public int Constitution { get { return _constitution; } set { _constitution = value; } }
+        public int HealthModifier { get { return _healthModifier; } set { _healthModifier = value; } }
         public string Description { get { return _description; } set { _description = value; } }
+        public Weapon EqWeapon { get { return _eqWeapon; } set { _eqWeapon = value;} }
+
 
         //CONSTRUCTORS
-        public Race(string name, int str, int intel, int dex, int con, string description)
+        public PlayerClass(string name, int str, int intel, int dex, int con, int healthModifier, Weapon eqWeapon, string description)
         {
             Name = name;
             Strength = str;
             Intelligence = intel;
             Dexterity = dex;
             Constitution = con;
+            HealthModifier = healthModifier;
             Description = description;
+            EqWeapon = eqWeapon;
         }
-        public Race() { }
+        public PlayerClass() { }
 
         //METHODS
         public override string ToString()
         {
             return $"-----{Name}-----\n\nStrength: +{Strength}\nIntelligence: +{Intelligence}\n" +
-                $"Dexterity: +{Dexterity}\nConstitution: +{Constitution}\n\n{Description}\n\n";
-
-
-
-
+                $"Dexterity: +{Dexterity}\nConstitution: +{Constitution}\nHealthModifier: {HealthModifier}\n\n{Description}\n\n";
         }
+
+
     }
 }

@@ -8,6 +8,8 @@ namespace Dungeon
     {
         static void Main(string[] args)
         {
+
+
             //TODO: Create a Player object to track info/stats
             
             bool loopGame = true;
