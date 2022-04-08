@@ -70,13 +70,32 @@ namespace DungeonLibrary
 
         //METHODS
         Random randomNbrGen = new Random();
-        public int CalcDamage()
+        public override int CalcDamage()
         {
-            //return base.CalcDamage();
-            return randomNbrGen.Next(EquippedWeapon.MinDamage, EquippedWeapon.MaxDamage);
+            int roll = randomNbrGen.Next(1, 21);
 
+            if (PClass.Name.ToLower() == "warrior")
+            {
+                return randomNbrGen.Next(EquippedWeapon.MinDamage, EquippedWeapon.MaxDamage) + ((Strength - 10) / 2);
+            }
+            else if (PClass.Name.ToLower() == "wizard")
+            {
+                return randomNbrGen.Next(EquippedWeapon.MinDamage, EquippedWeapon.MaxDamage) + ((Intelligence - 10) / 2);
+            }
+            else if (PClass.Name.ToLower() == "rogue")
+            {
+                return randomNbrGen.Next(EquippedWeapon.MinDamage, EquippedWeapon.MaxDamage) + ((Dexterity - 10) / 2);
+            }
+            else if (PClass.Name.ToLower() == "ranger")
+            {
+                return randomNbrGen.Next(EquippedWeapon.MinDamage, EquippedWeapon.MaxDamage) + ((Dexterity - 10) / 2);
+            }
+            else
+            {
+                return 0;
+            }
         }
-        public int CalcHitChance()
+        public override int CalcHitChance()
         {
             int roll = randomNbrGen.Next(1, 21);
 

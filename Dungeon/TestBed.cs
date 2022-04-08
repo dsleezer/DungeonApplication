@@ -53,29 +53,54 @@ namespace Dungeon
                 Console.WriteLine("1) Warrior\n2) Wizard\n3) Rogue\n4) Ranger\n");
 
                 string classSelection = "";
+                string classConfirmation"";
                 classSelection = Console.ReadKey(true).Key.ToString();
 
                 switch (classSelection)
                 {
                     case "D1":
                     case "NumPad1":
-                        player1.PClass = warrior;
-                        classMenu = !classMenu;
+                        Console.WriteLine($"You chose Warrior.\n{warrior}\nAre you sure? Y/N");
+                        classConfirmation = Console.ReadKey(true).Key.ToString();
+                        if (classConfirmation == "Y")
+                        {
+                            player1.PClass = warrior;
+                            classMenu = !classMenu;
+                        }
+                        else { }
                         break;
                     case "D2":
                     case "NumPad2":
-                        player1.PClass = wizard;
-                        classMenu = !classMenu;
+                        Console.WriteLine($"You chose Warrior.\n{wizard}\nAre you sure? Y/N");
+                        classConfirmation = Console.ReadKey(true).Key.ToString();
+                        if (classConfirmation == "Y")
+                        {
+                            player1.PClass = wizard;
+                            classMenu = !classMenu;
+                        }
+                        else { }
                         break;
                     case "D3":
                     case "NumPad3":
-                        player1.PClass = rogue;
-                        classMenu = !classMenu;
+                        Console.WriteLine($"You chose Warrior.\n{rogue}\nAre you sure? Y/N");
+                        classConfirmation = Console.ReadKey(true).Key.ToString();
+                        if (classConfirmation == "Y")
+                        {
+                            player1.PClass = rogue;
+                            classMenu = !classMenu;
+                        }
+                        else { }
                         break;
                     case "D4":
                     case "NumPad4":
-                        player1.PClass = ranger;
-                        classMenu = !classMenu;
+                        Console.WriteLine($"You chose Warrior.\n{ranger}\nAre you sure? Y/N");
+                        classConfirmation = Console.ReadKey(true).Key.ToString();
+                        if (classConfirmation == "Y")
+                        {
+                            player1.PClass = ranger;
+                            classMenu = !classMenu;
+                        }
+                        else { }
                         break;
                     default:
                         Console.WriteLine("Input not valid...");

@@ -41,7 +41,7 @@ namespace DungeonLibrary
 
         public virtual int CalcBlock()
         {
-            int blockChance = 10 + Dexterity;
+            int blockChance = 10 + Dexterity + Strength;
             return blockChance;
         }
         public virtual int CalcHitChance()
