@@ -21,7 +21,8 @@ namespace DungeonLibrary
         Polearm,
         Mace,
         Warhammer,
-        Club
+        Club,
+        Default
 
 
 

@@ -6,19 +6,12 @@ using System.Threading.Tasks;
 
 namespace DungeonLibrary
 {
-    public class MonsterGenerator : Character
+    public class Monster : Character
     {
         //FIELDS
-        //private string _name;
-        //private int _strength;
-        //private int _intelligence;
-        //private int _dexterity;
-        //private int _constitution;
         private int _minDamage;
 
         //PROPERTIES
-        public int MaxHealth { get; set; }
-        public int CurrentHealth { get; set; }
         public string Description { get; set; }
         public int MaxDamage { get; set; }
         public int MinDamage
@@ -42,7 +35,7 @@ namespace DungeonLibrary
         public string Type { get; set; }
 
         //CONSTRUCTORS
-        public MonsterGenerator(string name, int str, int intel, int dex, int con, int maxH, int curH, int minD, int maxD, int hit, string type, string description) : base(name, str, intel, dex, con)
+        public Monster(string name, int str, int intel, int dex, int con, int maxH, int curH, int minD, int maxD, int hit, int armor, int exp, string type, string description) : base(name, str, intel, dex, con)
         {
             MaxHealth = maxH;
             CurrentHealth = curH;
@@ -51,6 +44,8 @@ namespace DungeonLibrary
             MinDamage = minD;
             BonusHit = hit;
             Type = type;
+            Armor = armor;
+            Exp = exp;
         }
 
 
@@ -61,15 +56,15 @@ namespace DungeonLibrary
         {
             int roll = randomNbrGen.Next(1, 21);
 
-            if (Type == "strength")
+            if (Type == "Strength")
             {
                 return roll + BonusHit + ((Strength - 10) / 2);
             }
-            else if (Type == "dexterity")
+            else if (Type == "Dexterity")
             {
                 return roll + BonusHit + ((Intelligence - 10) / 2);
             }
-            else if (Type == "intelligence")
+            else if (Type == "Intelligence")
             {
                 return roll + BonusHit + ((Dexterity - 10) / 2);
             }
@@ -100,9 +95,32 @@ namespace DungeonLibrary
                 return 0;
             }
         }
+        public override int CalcBlock()
+        {
+
+            if (Type == "Strength")
+            {
+                return Armor + ((Strength - 10) / 2);
+            }
+            else if (Type == "Dexterity")
+            {
+                return Armor + ((Dexterity - 10) / 2);
+            }
+            else
+            {
+                return Armor;
+            }
+        }
+        public override int CalcInitiative()
+        {
+            int roll = randomNbrGen.Next(1, 21);
+
+            return roll + ((Dexterity - 10) / 2);
+        }
+
         public override string ToString()
         {
-            return $"-----{Name}-----\nHealth: {CurrentHealth} / {MaxHealth}\nFavored Attribute: {Type}\nStrength: +{Strength}\nIntelligence: +{Intelligence}\n" +
+            return $"-----{Name}-----\nHealth: {CurrentHealth} / {MaxHealth}\nFavored Attribute: {Type}\nAverage Damage: {(MinDamage+MaxDamage)/2}\nStrength: +{Strength}\nIntelligence: +{Intelligence}\n" +
                 $"Dexterity: +{Dexterity}\nConstitution: +{Constitution}\n\n{Description}\n\n";
         }
 

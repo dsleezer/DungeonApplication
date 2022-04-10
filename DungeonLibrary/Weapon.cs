@@ -10,20 +10,16 @@ namespace DungeonLibrary
     {
         //FIELDS
 
-        private int _maxDamage;
         private int _minDamage;
-        private string _name;
-        private int _bonusHitChance;
-        private bool _isTwoHanded;
-        private WeaponType _weaponType;
-
+    
         //PROPERTIES
 
-        public int MaxDamage { get { return _maxDamage; } set { _maxDamage = value; } }
-        public string Name { get { return _name; } set { _name = value; } }
-        public int BonusHitChance { get { return _bonusHitChance; } set { _bonusHitChance = value; } }
-        public bool IsTwoHanded { get { return _isTwoHanded; } set { _isTwoHanded = value; } }
-        public WeaponType WeaponType { get { return _weaponType; } set { _weaponType = value; } }
+        public int MaxDamage { get; set; }
+        public string Name { get; set; }
+        public int BonusHitChance { get; set; }
+        public bool IsTwoHanded { get; set; }
+        public WeaponType WeaponType { get; set; }
+        public int BonusDamage { get; set; }
         public int MinDamage
         {
             get { return _minDamage; }
@@ -42,7 +38,7 @@ namespace DungeonLibrary
 
         //CONSTRUCTORS
 
-        public Weapon(int minDamage, int maxDamage, string name, int bonusHitChance, bool isTwoHanded, WeaponType type)
+        public Weapon(string name, int minDamage, int maxDamage, int bonusHitChance, int bonusDamage, bool isTwoHanded, WeaponType type)
         {
             MinDamage = minDamage;
             MaxDamage = maxDamage;
@@ -50,6 +46,7 @@ namespace DungeonLibrary
             BonusHitChance = bonusHitChance;
             IsTwoHanded = isTwoHanded;
             WeaponType = type;
+            BonusDamage = bonusDamage;
         }
 
         //METHODS
