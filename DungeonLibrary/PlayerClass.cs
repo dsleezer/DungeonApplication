@@ -6,43 +6,22 @@ using System.Threading.Tasks;
 
 namespace DungeonLibrary
 {
-    public class PlayerClass
+    public class PlayerClass : Race
     {
         //FIELDS
-        private string _name;
-        private int _strength;
-        private int _intelligence;
-        private int _dexterity;
-        private int _constitution;
-        private int _healthModifier;
-        private string _description;
-        private Weapon _eqWeapon;
 
         //PROPERTIES
-        public string Name { get { return _name; } set { _name = value; } }
-        public int Strength { get { return _strength; } set { _strength = value; } }
-        public int Intelligence { get { return _intelligence; } set { _intelligence = value; } }
-        public int Dexterity { get { return _dexterity; } set { _dexterity = value; } }
-        public int Constitution { get { return _constitution; } set { _constitution = value; } }
-        public int HealthModifier { get { return _healthModifier; } set { _healthModifier = value; } }
-        public string Description { get { return _description; } set { _description = value; } }
-        public Weapon EqWeapon { get { return _eqWeapon; } set { _eqWeapon = value;} }
+        public int HealthModifier { get; set; }
+        public Weapon EqWeapon { get; set; }
 
 
         //CONSTRUCTORS
-        public PlayerClass(string name, int str, int intel, int dex, int con, int healthModifier, Weapon eqWeapon, string description)
+        public PlayerClass(string name, int str, int intel, int dex, int con, int healthModifier, Weapon eqWeapon, string description) : base(name, str, intel, dex, con, description)
         {
-            Name = name;
-            Strength = str;
-            Intelligence = intel;
-            Dexterity = dex;
-            Constitution = con;
             HealthModifier = healthModifier;
-            Description = description;
             EqWeapon = eqWeapon;
         }
         public PlayerClass() { }
-
         //METHODS
         public override string ToString()
         {

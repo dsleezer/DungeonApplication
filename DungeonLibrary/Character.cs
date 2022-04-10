@@ -10,20 +10,16 @@ namespace DungeonLibrary
     {
         //FIELDS
 
-        private string _name;
-        private int _strength;
-        private int _intelligence;
-        private int _dexterity;
-        private int _constitution;
-
-
         //PROPERTIES
-        public string Name { get { return _name; } set { _name = value; } }
-        public int Strength { get { return _strength; } set { _strength = value; } }
-        public int Intelligence { get { return _intelligence ; } set { _intelligence = value; } }
-        public int Dexterity { get { return _dexterity ; } set { _dexterity = value; } }
-        public int Constitution { get { return _constitution; } set { _constitution = value; } }
-
+        public string Name { get; set; }
+        public int Exp { get; set; }
+        public int Strength { get; set; }
+        public int Intelligence { get; set; }
+        public int Dexterity { get; set; }
+        public int Constitution { get; set; }
+        public int MaxHealth { get; set; }
+        public int CurrentHealth { get; set; }
+        public int Armor { get; set; }
 
 
         //CONSTRUCTORS
@@ -34,21 +30,27 @@ namespace DungeonLibrary
             Intelligence = intelligence;
             Dexterity = dexterity;
             Constitution = constitution;
+            MaxHealth = 1;
+            CurrentHealth = 1;
+            Exp = 0;
+            Armor = 0;
         }
-        public Character() { }
 
         //METHODS
 
         public virtual int CalcBlock()
         {
-            int blockChance = 10 + Dexterity + Strength;
-            return blockChance;
+            return 0;
         }
         public virtual int CalcHitChance()
         {
             return 0;
         }
         public virtual int CalcDamage()
+        {
+            return 0;
+        }
+        public virtual int CalcInitiative()
         {
             return 0;
         }
