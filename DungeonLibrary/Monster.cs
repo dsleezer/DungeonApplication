@@ -120,7 +120,7 @@ namespace DungeonLibrary
 
         public override string ToString()
         {
-            return $"-----{Name}-----\nHealth: {CurrentHealth} / {MaxHealth}\nFavored Attribute: {Type}\nAverage Damage: {(MinDamage+MaxDamage)/2}\nStrength: +{Strength}\nIntelligence: +{Intelligence}\n" +
+            return $"-----{Name}-----\n\nHealth: {CurrentHealth} / {MaxHealth}\nFavored Attribute: {Type}\nAverage Damage: {(MinDamage+MaxDamage)/2}\nStrength: +{Strength}\nIntelligence: +{Intelligence}\n" +
                 $"Dexterity: +{Dexterity}\nConstitution: +{Constitution}\n\n{Description}\n\n";
         }
 

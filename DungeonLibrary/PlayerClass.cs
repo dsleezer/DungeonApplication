@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonLibrary
 {
-    public class PlayerClass : Race
+    public sealed class PlayerClass : Race
     {
         //FIELDS
 
@@ -25,7 +25,7 @@ namespace DungeonLibrary
         //METHODS
         public override string ToString()
         {
-            return $"-----{Name}-----\n\nStrength: +{Strength}\nIntelligence: +{Intelligence}\n" +
+            return $"-------{Name}-------\n\nStrength: +{Strength}\nIntelligence: +{Intelligence}\n" +
                 $"Dexterity: +{Dexterity}\nConstitution: +{Constitution}\nHealthModifier: {HealthModifier}\n\n{Description}\n\n";
         }
 

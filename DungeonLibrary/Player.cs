@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonLibrary
 {
-    public class Player : Character
+    public sealed class Player : Character
     {
         //FIELDS
 
@@ -20,12 +20,13 @@ namespace DungeonLibrary
         public Race PRace { get; set; }
         public Weapon EquippedWeapon { get; set; }
         public int Level { get; set; }
+        public MapCoordinates Map { get; set; }
         public int Armor
         {
             get { return _armor; }
             set
             {
-                if(PClass.Name == "warrior")
+                if(PClass.Name == "Warrior")
                 {
                 _armor = value + Strength;
                 }
@@ -44,7 +45,7 @@ namespace DungeonLibrary
             get { return _maxHealth; }
             set
             {
-                _maxHealth = value + PClass.HealthModifier * Level + (Constitution - 10) / 2;
+                _maxHealth = value + PClass.HealthModifier + (Constitution - 10) / 2;
             }
         }
         public int CurrentHealth
@@ -57,7 +58,7 @@ namespace DungeonLibrary
         }
 
         //CONSTRUCTORS
-        public Player(string name, PlayerClass pClass, Race pRace, int strength, int intelligence, int dexterity, int constitution) : base(name, strength, intelligence, dexterity, constitution)
+        public Player(string name, PlayerClass pClass, Race pRace, int strength, int intelligence, int dexterity, int constitution, MapCoordinates map) : base(name, strength, intelligence, dexterity, constitution)
         {
             Name = name;
             PClass = pClass;
@@ -69,10 +70,10 @@ namespace DungeonLibrary
             Intelligence = intelligence + PClass.Intelligence + PRace.Intelligence;
             Dexterity = dexterity + PClass.Dexterity + PRace.Dexterity;
             Constitution = constitution + PClass.Constitution + PRace.Constitution;
-            MaxHealth = 20;
-            CurrentHealth = 20;
+            MaxHealth = 10;
+            CurrentHealth = 10;
             Armor = 0;
-
+            Map = map;
         }
 
         //METHODS
@@ -135,8 +136,8 @@ namespace DungeonLibrary
         }
         public override string ToString()
         {
-            return $"\n------------------\nName: {Name}\nLevel {Level} {PClass.Name}\nHealth: {CurrentHealth} / {MaxHealth}\n" +
-                $"Race: {PRace.Name}\nArmor: {Armor}\nWeapon: {EquippedWeapon.Name}" +
+            return $"------{((Name == "" )? "-------" : Name)}------\n\nLevel {Level} {PClass.Name}\nHealth: {CurrentHealth} / {MaxHealth}\n" +
+                $"Race: {PRace.Name}\nArmor: {Armor}\nWeapon: {EquippedWeapon.Name}\n\n" +
                 $"Attributes\n\nStrength: {Strength}\nIntelligence: {Intelligence}\n" +
                 $"Dexterity: {Dexterity}\nConstitution: {Constitution}\nExperience: {Exp} / {((Level == 10) ? "1000" : (Level * 100))}";
         }

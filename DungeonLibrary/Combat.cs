@@ -52,10 +52,24 @@ namespace DungeonLibrary
             }
             else
             {
-                DoAttack(monster, player);
-                if (player.CurrentHealth > 0)
+                if (player.EquippedWeapon.WeaponType == WeaponType.Dagger)
                 {
-                    DoAttack(player, monster);
+                    DoAttack(monster, player);
+                    
+                    if (monster.CurrentHealth > 0)
+                    {
+                        DoAttack(player, monster);
+                        DoAttack(player, monster);
+                    }
+                }
+                else
+                {
+
+                    DoAttack(monster, player);
+                    if (monster.CurrentHealth > 0)
+                    {
+                        DoAttack(player, monster);
+                    }
                 }
             }
         }

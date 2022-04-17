@@ -8,6 +8,8 @@ namespace Dungeon
     {
         static void Main(string[] args)
         {
+            Console.SetWindowSize(159, 45);
+
             int score = 0;
 
             bool loopGame = true;
@@ -17,12 +19,7 @@ namespace Dungeon
 
                 Player mainPlayer = PlayerWarehouse.CreatePlayer();
 
-                Console.WriteLine(mainPlayer);
-
-                Console.ReadKey();
-
                 #endregion
-
 
                 bool loopEncounter = true;
 
@@ -38,8 +35,8 @@ namespace Dungeon
                     do//BattleLoop
                     {
                         Console.Clear();
-
-                        Console.WriteLine(activeEnemy);
+                        PlayerDisplay.ShowPlayer(mainPlayer);
+                        MonsterDisplay.ShowMonster(activeEnemy);
                         //TODO: display the room
 
 
@@ -60,6 +57,7 @@ namespace Dungeon
                                 //Check if the monster is dead
                                 if (activeEnemy.CurrentHealth <= 0)
                                 {
+                                    SoundWarehouse.PlaySong();
                                     //use green text to highlight winning combat
                                     Console.ForegroundColor = ConsoleColor.Green;
 
@@ -81,8 +79,7 @@ namespace Dungeon
                                     //Update the score
                                     score++;
 
-                                    //Flip the loopMenu bool to exit the current menu loop
-                                    //so we can get a new room & monster
+                                    //Exit the current menu loop
                                     loopMenu = false;
                                 }
                                 Console.WriteLine("Press any key to continue.");

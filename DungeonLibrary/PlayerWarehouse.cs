@@ -14,27 +14,27 @@ namespace DungeonLibrary
             #region Asset Initialization
 
             Weapon greatsword = new Weapon("Greatsword", 2, 12, 3, 4, true, WeaponType.Greatsword);
-            Weapon staff = new Weapon ("Staff", 5, 15, 2, 8, true, WeaponType.Staff);
+            Weapon staff = new Weapon("Staff", 5, 15, 2, 8, true, WeaponType.Staff);
             Weapon dagger = new Weapon("Dagger", 1, 4, 5, 2, false, WeaponType.Dagger);
             Weapon longbow = new Weapon("Longbow", 2, 12, 6, 6, true, WeaponType.Longbow);
 
 
-            PlayerClass warrior = new PlayerClass("Warrior", 6, 0, 2, 6, 10, greatsword, "The ultimate fighter, able to hit hard and take hits.");
-            PlayerClass wizard = new PlayerClass("Wizard", 0, 4, 1, 0, 4, staff, "Inherently prone to using magic but not very durable.");
-            PlayerClass rogue = new PlayerClass("Rogue", 2, 0, 6, 4, 8, dagger, "Prefers sneaking up on enemies and taking them out before they know that anything's there.");
-            PlayerClass ranger = new PlayerClass("Ranger", 0, 2, 6, 4, 6, longbow, "Shoots from a distance to keep from getting hurt.");
+            PlayerClass warrior = new PlayerClass("Warrior", 4, 0, 2, 4, 8, greatsword, "The ultimate fighter.\nFavors strength.\nHigh Health");
+            PlayerClass wizard = new PlayerClass("Wizard", 0, 4, 1, 0, 4, staff, "Utilizes magic.\nFavors intelligence.\nLow health.");
+            PlayerClass rogue = new PlayerClass("Rogue", 2, 0, 6, 4, 6, dagger, "Fast dagger attacks.\nFavors Dexterity.\nAverage Health");
+            PlayerClass ranger = new PlayerClass("Ranger", 0, 2, 6, 4, 4, longbow, "Fires arrows.\nFavors Dexterity.\nAverage Health");
 
             List<PlayerClass> classes = new List<PlayerClass> { warrior, wizard, rogue, ranger };
 
-            Race halforc = new Race("HalfOrc", 4, 0, 0, 2, "The green skinned humanoids. Quick to anger,\nslow to thought.");
-            Race elf = new Race("Elf", 0, 4, 0, 2, "Older than any other race. They come from the\nethereal plain");
-            Race halfling = new Race("Halfling", 0, 2, 2, 2, "Often mistaken for a large child due to both\ntheir looks and mannerisms.");
-            Race gnome = new Race("Gnome", 0, 0, 4, 2, "The smallest of the humanoid races, barely coming up\nto the average person's knee.");
-            Race human = new Race("Human", 2, 2, 0, 2, "Nothing particularly special but that's what makes them special.");
-            Race dwarf = new Race("Dwarf", 2, 0, 0, 4, "Known for their facial hair, even on the women.");
-            Race halfelf = new Race("Half-Elf", 2, 2, 2, 2, "A cross between an elf and a human.");
-            Race tiefling = new Race("Tiefling", 0, 2, 4, 2, "The green skinned humanoids. Quick to anger, slow to thought.");
-            Race dragonborn = new Race("Dragonborn", 2, 0, 2, 2, "Decended from ancient dragons. They retain\nsome of their ancestors traits including appearance.");
+            Race halforc = new Race("HalfOrc", 3, 0, 0, 1, "Green tinted skin.\nGreat in a fight.");
+            Race elf = new Race("Elf", 0, 2, 1, 1, "Pointed ears.\nWell studied.");
+            Race halfling = new Race("Halfling", 0, 1, 3, 0, "Child sized.\nQuick by size.");
+            Race gnome = new Race("Gnome", 0, 2, 0, 2, "Barely up to you knee.\nEnjoys tricks.");
+            Race human = new Race("Human", 1, 1, 0, 2, "Nothing unique.\nVery young race.");
+            Race dwarf = new Race("Dwarf", 1, 0, 0, 3, "Glorious beards.\nCan take a hit.");
+            Race halfelf = new Race("Half-Elf", 1, 1, 1, 1, "An elf but a human\nBalanced in everything.");
+            Race tiefling = new Race("Tiefling", 0, 2, 2, 0, "Part demon with horns.\nQuick and smart.");
+            Race dragonborn = new Race("Dragonborn", 1, 3, 0, 0, "Scaly like a dragon\nInherited knowledge.");
 
             List<Race> races = new List<Race> { halforc, elf, gnome, human, dwarf, halfelf, tiefling, dragonborn };
 
@@ -53,19 +53,64 @@ namespace DungeonLibrary
             bool classMenu = true;
             do
             {
+                Console.SetCursorPosition(31, 2);
+                Console.WriteLine(@"
+                               ╔═════════════════════════════════════════════════════════════════════════════════════════════════╗
+                               ║    ___  _  _   __    __   ____  ____    _  _  __   _  _  ____     ___  __     __   ____  ____   ║
+                               ║   / __)/ )( \ /  \  /  \ / ___)(  __)  ( \/ )/  \ / )( \(  _ \   / __)(  )   / _\ / ___)/ ___)  ║
+                               ║  ( (__ ) __ ((  O )(  O )\___ \ ) _)    )  /(  O )) \/ ( )   /  ( (__ / (_/\/    \\___ \\___ \  ║
+                               ║   \___)\_)(_/ \__/  \__/ (____/(____)  (__/  \__/ \____/(__\_)   \___)\____/\_/\_/(____/(____/  ║
+                               ║                                                                                                 ║
+                               ╚═════════════════════════════════════════════════════════════════════════════════════════════════╝");
 
-                Console.WriteLine("Choose your Class\n");
-                foreach (var item in classes)
+                string[] stringWarrior = warrior.ToString().Split('\n');
+                for (int i = 0; i < stringWarrior.Length; i++)
                 {
-
-                    Console.WriteLine(item);
+                    Console.SetCursorPosition(31, i + 11);
+                    Console.WriteLine(stringWarrior[i]);
                 }
-                Console.WriteLine("1) Warrior\n2) Wizard\n3) Rogue\n4) Ranger\n");
+                string[] stringWizard = wizard.ToString().Split('\n');
+                for (int i = 0; i < stringWizard.Length; i++)
+                {
+                    Console.SetCursorPosition(57, i + 11);
+                    Console.WriteLine(stringWizard[i]);
+                }
+                string[] stringRogue = rogue.ToString().Split('\n');
+                for (int i = 0; i < stringRogue.Length; i++)
+                {
+                    Console.SetCursorPosition(83, i + 11);
+                    Console.WriteLine(stringRogue[i]);
+                }
+                string[] stringRanger = ranger.ToString().Split('\n');
+                for (int i = 0; i < stringRanger.Length; i++)
+                {
+                    Console.SetCursorPosition(109, i + 11);
+                    Console.WriteLine(stringRanger[i]);
+                }
+
+                Console.SetCursorPosition(31, 23);
+                Console.WriteLine("1) Warrior");
+                Console.SetCursorPosition(57, 23);
+                Console.WriteLine("2) Wizard");
+                Console.SetCursorPosition(83, 23);
+                Console.WriteLine("3) Rogue");
+                Console.SetCursorPosition(109, 23);
+                Console.WriteLine("4) Ranger");
+
+
+
+
+                //Console.WriteLine("Choose your Class\n");
+                //foreach (var item in classes)
+                //{
+
+                //    Console.WriteLine(item);
+                //}
+                //Console.WriteLine("1) Warrior\n2) Wizard\n3) Rogue\n4) Ranger\n");
                 bool menuSuccess = true;
                 string classSelection = "";
                 string classConfirmation = "";
                 classSelection = Console.ReadKey(true).Key.ToString();
-                Console.Clear();
                 switch (classSelection)
                 {
                     case "D1":
@@ -91,7 +136,8 @@ namespace DungeonLibrary
                 }
                 if (menuSuccess == true)
                 {
-                    Console.WriteLine($"You chose {pClass.Name}.\n{pClass}\nAre you sure? Y/N");
+                    Console.SetCursorPosition(31, 25);
+                    Console.WriteLine($"You chose {pClass.Name}. Are you sure? Y/N");
                     classConfirmation = Console.ReadKey(true).Key.ToString();
                     Console.Clear();
                     if (classConfirmation == "Y")
@@ -109,19 +155,103 @@ namespace DungeonLibrary
             bool raceMenu = true;
             do
             {
-                Console.WriteLine("Choose your Race\n");
-                foreach (var item in races)
-                {
+                Console.SetCursorPosition(31, 2);
+                Console.WriteLine(@"
+                               ╔═════════════════════════════════════════════════════════════════════════════════════════════════╗
+                               ║       ___  _  _   __    __   ____  ____    _  _  __   _  _  ____    ____   __    ___  ____      ║
+                               ║      / __)/ )( \ /  \  /  \ / ___)(  __)  ( \/ )/  \ / )( \(  _ \  (  _ \ / _\  / __)(  __)     ║
+                               ║     ( (__ ) __ ((  O )(  O )\___ \ ) _)    )  /(  O )) \/ ( )   /   )   //    \( (__  ) _)      ║
+                               ║      \___)\_)(_/ \__/  \__/ (____/(____)  (__/  \__/ \____/(__\_)  (__\_)\_/\_/ \___)(____)     ║
+                               ║                                                                                                 ║
+                               ╚═════════════════════════════════════════════════════════════════════════════════════════════════╝");
 
-                    Console.WriteLine(item);
+                string[] stringHalforc = halforc.ToString().Split('\n');
+                for (int i = 0; i < stringHalforc.Length; i++)
+                {
+                    Console.SetCursorPosition(19, i + 11);
+                    Console.WriteLine(stringHalforc[i]);
                 }
-                Console.WriteLine("1) Half-Orc\t\t2) Elf\n3) Halfling\t\t4) Gnome\n5) Human\t\t6) Dwarf\n7) Half-Elf\t\t8)Tiefling\n9) Dragonborn");
+                string[] stringElf = elf.ToString().Split('\n');
+                for (int i = 0; i < stringElf.Length; i++)
+                {
+                    Console.SetCursorPosition(45, i + 11);
+                    Console.WriteLine(stringElf[i]);
+                }
+                string[] stringHalfling = halfling.ToString().Split('\n');
+                for (int i = 0; i < stringHalfling.Length; i++)
+                {
+                    Console.SetCursorPosition(71, i + 11);
+                    Console.WriteLine(stringHalfling[i]);
+                }
+                string[] stringGnome = gnome.ToString().Split('\n');
+                for (int i = 0; i < stringGnome.Length; i++)
+                {
+                    Console.SetCursorPosition(97, i + 11);
+                    Console.WriteLine(stringGnome[i]);
+                }
+                string[] stringHuman = human.ToString().Split('\n');
+                for (int i = 0; i < stringHuman.Length; i++)
+                {
+                    Console.SetCursorPosition(123, i + 11);
+                    Console.WriteLine(stringHuman[i]);
+                }
+                string[] stringDwarf = dwarf.ToString().Split('\n');
+                for (int i = 0; i < stringDwarf.Length; i++)
+                {
+                    Console.SetCursorPosition(31, i + 24);
+                    Console.WriteLine(stringDwarf[i]);
+                }
+                string[] stringHalfelf = halfelf.ToString().Split('\n');
+                for (int i = 0; i < stringHalfelf.Length; i++)
+                {
+                    Console.SetCursorPosition(57, i + 24);
+                    Console.WriteLine(stringHalfelf[i]);
+                }
+                string[] stringTiefling = tiefling.ToString().Split('\n');
+                for (int i = 0; i < stringGnome.Length; i++)
+                {
+                    Console.SetCursorPosition(83, i + 24);
+                    Console.WriteLine(stringGnome[i]);
+                }
+                string[] stringDragonborn = dragonborn.ToString().Split('\n');
+                for (int i = 0; i < stringDragonborn.Length; i++)
+                {
+                    Console.SetCursorPosition(109, i + 24);
+                    Console.WriteLine(stringDragonborn[i]);
+                }
+
+                Console.SetCursorPosition(19, 21);
+                Console.WriteLine("1) Half-Orc");
+                Console.SetCursorPosition(45, 21);
+                Console.WriteLine("2) Elf");
+                Console.SetCursorPosition(71, 21);
+                Console.WriteLine("3) Halfling");
+                Console.SetCursorPosition(97, 21);
+                Console.WriteLine("4) Gnome");
+                Console.SetCursorPosition(123, 21);
+                Console.WriteLine("5) Human");
+                Console.SetCursorPosition(31, 34);
+                Console.WriteLine("6) Dwarf");
+                Console.SetCursorPosition(57, 34);
+                Console.WriteLine("7) Half-Elf");
+                Console.SetCursorPosition(83, 34);
+                Console.WriteLine("8) Tiefling");
+                Console.SetCursorPosition(109, 34);
+                Console.WriteLine("9) Dragonborn");
+
+
+                //Console.WriteLine("Choose your Race\n");
+                //foreach (var item in races)
+                //{
+
+                //    Console.WriteLine(item);
+                //}
+                //Console.WriteLine("1) Half-Orc\t\t2) Elf\n3) Halfling\t\t4) Gnome\n5) Human\t\t6) Dwarf\n7) Half-Elf\t\t8)Tiefling\n9) Dragonborn");
 
                 string raceSelection = "";
                 string raceConfirmation = "";
                 bool menuSuccess = true;
                 raceSelection = Console.ReadKey(true).Key.ToString();
-                Console.Clear();
                 switch (raceSelection)
                 {
                     case "D1":
@@ -167,7 +297,8 @@ namespace DungeonLibrary
                 }
                 if (menuSuccess == true)
                 {
-                    Console.WriteLine($"You chose {pRace.Name}.\n{pRace}\nAre you sure? Y/N");
+                    Console.SetCursorPosition(31, 36);
+                    Console.WriteLine($"You chose {pRace.Name}. Are you sure? Y/N");
                     raceConfirmation = Console.ReadKey(true).Key.ToString();
                     Console.Clear();
                     if (raceConfirmation == "Y")
@@ -178,9 +309,43 @@ namespace DungeonLibrary
                 }
             } while (raceMenu);
 
+            MapCoordinates pMap = new MapCoordinates(1, 1);
+
+            Player mainPlayer = new Player(pName, pClass, pRace, 10, 10, 10, 10, pMap);
             #endregion
 
             #region Name Selection
+
+            Console.SetCursorPosition(31, 2);
+            Console.WriteLine(@"
+                               ╔═════════════════════════════════════════════════════════════════════════════════════════════════╗
+                               ║          _  _  __   _  _  ____     ___  _  _   __   ____   __    ___  ____  ____  ____          ║
+                               ║         ( \/ )/  \ / )( \(  _ \   / __)/ )( \ / _\ (  _ \ / _\  / __)(_  _)(  __)(  _ \         ║
+                               ║          )  /(  O )) \/ ( )   /  ( (__ ) __ (/    \ )   //    \( (__   )(   ) _)  )   /         ║
+                               ║         (__/  \__/ \____/(__\_)   \___)\_)(_/\_/\_/(__\_)\_/\_/ \___) (__) (____)(__\_)         ║
+                               ║                                                                                                 ║
+                               ╚═════════════════════════════════════════════════════════════════════════════════════════════════╝");
+
+            string[] playerClass = pClass.ToString().Split('\n');
+            for (int i = 0; i < playerClass.Length; i++)
+            {
+                Console.SetCursorPosition(45, i + 11);
+                Console.WriteLine(playerClass[i]);
+            }
+            string[] mainString = mainPlayer.ToString().Split('\n');
+            for (int i = 0; i < mainString.Length; i++)
+            {
+                Console.SetCursorPosition(71, i + 11);
+                Console.WriteLine(mainString[i]);
+            }
+            string[] playerRace = pRace.ToString().Split('\n');
+            for (int i = 0; i < playerRace.Length; i++)
+            {
+                Console.SetCursorPosition(97, i + 11);
+                Console.WriteLine(playerRace[i]);
+            }
+
+
 
 
             bool nameMenu = true;
@@ -189,20 +354,35 @@ namespace DungeonLibrary
             {
                 Console.WriteLine("What is your name?");
                 pName = Console.ReadLine().ToString();
+                mainPlayer.Name = pName;
+                mainString = mainPlayer.ToString().Split('\n');
+                for (int i = 0; i < mainString.Length; i++)
+                {
+                    Console.SetCursorPosition(71, i + 11);
+                    Console.WriteLine(mainString[i]);
+                }
                 Console.WriteLine($"Your name is {pName}.\n\nDo you want to keep this? Y/N");
                 nameConfirmation = Console.ReadKey(true).Key.ToString();
-                Console.Clear();
+
 
                 if (nameConfirmation == "Y")
                 {
                     nameMenu = !nameMenu;
                 }
-                else { }
+                else
+                {
+                    mainPlayer.Name = "";
+                    mainString = mainPlayer.ToString().Split('\n');
+                    for (int i = 0; i < mainString.Length; i++)
+                    {
+                        Console.SetCursorPosition(71, i + 11);
+                        Console.WriteLine(mainString[i]);
+                    }
+                }
             } while (nameMenu);
 
             #endregion
 
-            Player mainPlayer = new Player(pName, pClass, pRace, 10, 10, 10, 10);
 
 
             return mainPlayer;
@@ -220,13 +400,13 @@ namespace DungeonLibrary
 
                 do
                 {
-                Console.WriteLine(player);
+                    Console.WriteLine(player);
 
-                Console.WriteLine($"\nYou have {i} additional stat points to apply.\n" +
-                    "1) Strength\n" +
-                    "2) Intelligence\n" +
-                    "3) Dexterity\n" +
-                    "4) Constitution");
+                    Console.WriteLine($"\nYou have {i} additional stat points to apply.\n" +
+                        "1) Strength\n" +
+                        "2) Intelligence\n" +
+                        "3) Dexterity\n" +
+                        "4) Constitution");
                     Console.Write("Choose which stat to increase: ");
                     menuSelect = Console.ReadKey(true).Key.ToString();
                     Console.Clear();
@@ -261,10 +441,7 @@ namespace DungeonLibrary
             }
             player.Level++;
             player.Exp = 0;
-            player.MaxHealth += (player.PClass.HealthModifier + ((player.Constitution - 10) / 2));
-            player.CurrentHealth = player.MaxHealth;
-            Console.WriteLine("Press any key to continue.");
-            Console.ReadLine();
+            player.MaxHealth = player.MaxHealth;
         }
 
 
