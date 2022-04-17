@@ -53,14 +53,14 @@ namespace DungeonLibrary
             get { return _currentHealth; }
             set
             {
-                if(CurrentHealth > MaxHealth)
-                {
-                _currentHealth = MaxHealth;
-                }
-                else
-                {
+                //if(value > MaxHealth)
+                //{
+                //_currentHealth = MaxHealth;
+                //}
+                //else
+                //{
                     _currentHealth = value;
-                }
+                //}
             }
         }
 

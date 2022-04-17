@@ -393,10 +393,9 @@ namespace DungeonLibrary
         }
 
 
-        public static void LevelMenu(Player player)
+        public static void LevelMenu(Player player, int textLine)
         {
-            Console.Clear();
-            Console.WriteLine("Congratulations! You have leveled up!");
+            textLine = DispWarehouse.TextDisplay(textLine, "Congratulations! You have leveled up!");
             for (int i = 2; i > 0; i--)
             {
                 bool statSelect = true;
@@ -404,92 +403,91 @@ namespace DungeonLibrary
 
                 do
                 {
-                    Console.WriteLine(player);
-
-                    Console.WriteLine($"\nYou have {i} additional stat points to apply.\n" +
+                    textLine = DispWarehouse.TextDisplay(textLine, $"\nYou have {i} additional stat points to apply.\n" +
                         "1) Strength\n" +
                         "2) Intelligence\n" +
                         "3) Dexterity\n" +
                         "4) Constitution");
-                    Console.Write("Choose which stat to increase: ");
+                    textLine = DispWarehouse.TextDisplay(textLine, "Choose which stat to increase: ");
                     menuSelect = Console.ReadKey(true).Key.ToString();
                     Console.Clear();
                     switch (menuSelect)
                     {
                         case "D1":
                         case "NumPad1":
-                            Console.WriteLine("+1 Strength\n");
+                            textLine = DispWarehouse.TextDisplay(textLine, "+1 Strength\n");
                             player.Strength++;
                             break;
                         case "D2":
                         case "NumPad2":
-                            Console.WriteLine("+1 Intelligence\n");
+                            textLine = DispWarehouse.TextDisplay(textLine, "+1 Intelligence\n");
                             player.Intelligence++;
                             break;
                         case "D3":
                         case "NumPad3":
-                            Console.WriteLine("+1 Dexterity\n");
+                            textLine = DispWarehouse.TextDisplay(textLine, "+1 Dexterity\n");
                             player.Dexterity++;
                             break;
                         case "D4":
                         case "NumPad4":
-                            Console.WriteLine("+1 Constitution\n");
+                            textLine = DispWarehouse.TextDisplay(textLine, "+1 Constitution\n");
                             player.Constitution++;
                             break;
                         default:
-                            Console.WriteLine("Invalid Input\n");
+                            textLine = DispWarehouse.TextDisplay(textLine, "Invalid Input\n");
                             statSelect = !statSelect;
                             break;
                     }
                 } while (!statSelect);
             }
+            player.Exp = (player.Level == 10 ? -1000 : - player.Level * 100);
             player.Level++;
-            player.Exp = 0;
             player.MaxHealth = player.MaxHealth;
+            player.CurrentHealth = player.MaxHealth;
         }
 
 
-        public static void LevelUp(Player player)
+        public static void LevelUp(Player player, int textLine)
         {
             if (player.Level == 1 && player.Exp >= 100)
             {
-                LevelMenu(player);
+                LevelMenu(player, textLine);
             }
             else if (player.Level == 2 && player.Exp >= 200)
             {
-                LevelMenu(player);
+                LevelMenu(player, textLine);
             }
             else if (player.Level == 3 && player.Exp >= 300)
             {
-                LevelMenu(player);
+                LevelMenu(player, textLine);
             }
             else if (player.Level == 4 && player.Exp >= 400)
             {
-                LevelMenu(player);
+                LevelMenu(player, textLine);
             }
             else if (player.Level == 5 && player.Exp >= 500)
             {
-                LevelMenu(player);
+                LevelMenu(player, textLine);
             }
             else if (player.Level == 6 && player.Exp >= 600)
             {
-                LevelMenu(player);
+                LevelMenu(player, textLine);
             }
             else if (player.Level == 7 && player.Exp >= 700)
             {
-                LevelMenu(player);
+                LevelMenu(player, textLine);
             }
             else if (player.Level == 8 && player.Exp >= 800)
             {
-                LevelMenu(player);
+                LevelMenu(player, textLine);
             }
             else if (player.Level == 9 && player.Exp >= 900)
             {
-                LevelMenu(player);
+                LevelMenu(player, textLine);
             }
             else if (player.Level >= 10 && player.Exp >= 1000)
             {
-                LevelMenu(player);
+                LevelMenu(player, textLine);
             }
             else { }
         }

@@ -45,43 +45,43 @@ namespace DungeonLibrary
         {
             if (player.Map.MapX == 1)
             {
-                return 118;
+                return 117;
             }
             else if (player.Map.MapX == 2)
             {
-                return 122;
+                return 121;
             }
             else if (player.Map.MapX == 3)
             {
-                return 126;
+                return 125;
             }
             else if (player.Map.MapX == 4)
             {
-                return 130;
+                return 129;
             }
             else if (player.Map.MapX == 5)
             {
-                return 134;
+                return 133;
             }
             else if (player.Map.MapX == 6)
             {
-                return 138;
+                return 137;
             }
             else if (player.Map.MapX == 7)
             {
-                return 142;
+                return 141;
             }
             else if (player.Map.MapX == 8)
             {
-                return 146;
+                return 145;
             }
             else if (player.Map.MapX == 9)
             {
-                return 150;
+                return 149;
             }
             else
             {
-                return 118;
+                return 117;
             }
         }
         public static void MoveNorth(Player player)

@@ -820,7 +820,44 @@ namespace Dungeon
             #endregion
             DispWarehouse.BattleMenu();
 
+            #region TextDisplay
 
+            //// bottom left coordinate x=46,y=30
+            ////bottom right coordinate x=97,y=30
+            ////top left coordinate x=46,y=
+            ////top right coordinate x=97,y=18
+            const int MENU_START_X = 46;
+            const int MENU_END_X = 97;
+            const int MENU_LOWER_Y = 30;
+            const int MENU_UPPER_Y = 8;
+
+            int lineTracker = 0;
+            int textLine = 0;
+            string inputString = "Hello\nThis is a Test\nof the text\n\nDisplay.";
+            string[] textString = inputString.Split("\n");
+            for (int i = 0; i < textString.Length; i++)
+            {
+
+                Console.SetCursorPosition(MENU_START_X, MENU_UPPER_Y + textLine);
+                Console.WriteLine("                                                     ");
+                Console.SetCursorPosition(MENU_START_X, MENU_UPPER_Y + textLine);
+                Console.WriteLine(textString[i]);
+
+                Thread.Sleep(400);
+
+                textLine++;
+
+                if(textLine == MENU_LOWER_Y)
+                {
+                    textLine = 0;
+                }
+
+                lineTracker = textLine;
+            }
+            
+
+
+            #endregion
 
 
 

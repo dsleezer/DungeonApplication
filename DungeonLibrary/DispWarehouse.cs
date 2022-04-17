@@ -76,12 +76,12 @@ namespace DungeonLibrary
 
                 //window size x159,y45
                 //Player Stats
-                // bottom left coordinate x=115,y=20
-                //bottom right coordinate x=154,y=20
-                //top left coordinate x=115,y=3
-                //top right coordinate x=154,y=3
-                const int MENU_START_X = 115;
-                const int MENU_END_X = 154;
+                // bottom left coordinate x=113,y=20
+                //bottom right coordinate x=153,y=20
+                //top left coordinate x=114,y=3
+                //top right coordinate x=153,y=3
+                const int MENU_START_X = 114;
+                const int MENU_END_X = 153;
                 const int MENU_LOWER_Y = 20;
                 const int MENU_UPPER_Y = 2;
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -130,12 +130,12 @@ namespace DungeonLibrary
             {
                 //window size x159,y45
                 //Player Stats
-                // bottom left coordinate x=114,y=42
-                //bottom right coordinate x=154,y=42
-                //top left coordinate x=114,y=26
-                //top right coordinate x=154,y=26
-                const int MENU_START_X = 114;
-                const int MENU_END_X = 154;
+                // bottom left coordinate x=113,y=42
+                //bottom right coordinate x=153,y=42
+                //top left coordinate x=113,y=26
+                //top right coordinate x=153,y=26
+                const int MENU_START_X = 113;
+                const int MENU_END_X = 153;
                 const int MENU_LOWER_Y = 42;
                 const int MENU_UPPER_Y = 26;
                 //Vertical line left side
@@ -205,12 +205,12 @@ namespace DungeonLibrary
         {
             //window size x159,y45
             //Control Display
-            // bottom left coordinate x=51,y=38
-            //bottom right coordinate x=102,y=38
-            //top left coordinate x=51,y=28
-            //top right coordinate x=102,y=28
-            const int MENU_START_X = 51;
-            const int MENU_END_X = 102;
+            // bottom left coordinate x=46,y=38
+            //bottom right coordinate x=97,y=38
+            //top left coordinate x=46,y=28
+            //top right coordinate x=97,y=28
+            const int MENU_START_X = 46;
+            const int MENU_END_X = 97;
             const int MENU_LOWER_Y = 38;
             const int MENU_UPPER_Y = 28;
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -318,11 +318,11 @@ namespace DungeonLibrary
 
         public static void BattleMenu()
         {
-            // bottom left coordinate x=51,y=38
-            //bottom right coordinate x=102,y=38
-            //top left coordinate x=51,y=28
-            //top right coordinate x=102,y=28
-            const int MENU_START_X = 51;
+            // bottom left coordinate x=46,y=38
+            //bottom right coordinate x=97,y=38
+            //top left coordinate x=46,y=28
+            //top right coordinate x=97,y=28
+            const int MENU_START_X = 46;
             const int MENU_UPPER_Y = 28;
 
             Console.SetCursorPosition(MENU_START_X + 8, MENU_UPPER_Y + 2);
@@ -350,11 +350,11 @@ namespace DungeonLibrary
         #region MapMenu
         public static void MapMenu()
         {
-            // bottom left coordinate x=51,y=38
-            //bottom right coordinate x=102,y=38
-            //top left coordinate x=51,y=28
-            //top right coordinate x=102,y=28
-            const int MENU_START_X = 51;
+            // bottom left coordinate x=46,y=38
+            //bottom right coordinate x=97,y=38
+            //top left coordinate x=46,y=28
+            //top right coordinate x=97,y=28
+            const int MENU_START_X = 46;
             const int MENU_UPPER_Y = 28;
 
             Console.SetCursorPosition(MENU_START_X + 8, MENU_UPPER_Y + 2);
@@ -376,6 +376,68 @@ namespace DungeonLibrary
             Console.SetCursorPosition(MENU_START_X + 41, MENU_UPPER_Y + 8);
             Console.WriteLine("Exit");
         }
+        #endregion
+
+        #region TextDisplay
+
+        public static int TextDisplay(int textLine, string inputString)
+        {
+            //// bottom left coordinate x=46,y=30
+            ////bottom right coordinate x=97,y=30
+            ////top left coordinate x=46,y=
+            ////top right coordinate x=97,y=18
+            const int MENU_START_X = 46;
+            const int MENU_END_X = 97;
+            const int MENU_LOWER_Y = 30;
+            const int MENU_UPPER_Y = 8;
+
+            int lineTracker = 0;
+            string[] textString = inputString.Split("\n");
+            for (int i = 0; i < textString.Length; i++)
+            {
+
+                Console.SetCursorPosition(MENU_START_X, MENU_UPPER_Y + textLine);
+                Console.WriteLine("                                                     ");
+                Console.SetCursorPosition(MENU_START_X, MENU_UPPER_Y + textLine);
+                Console.WriteLine(textString[i]);
+
+                Thread.Sleep(400);
+
+                textLine++;
+
+                if (textLine + MENU_UPPER_Y == MENU_LOWER_Y)
+                {
+                    textLine = 0;
+                }
+
+                lineTracker = textLine;
+            }
+            return lineTracker;
+        }
+
+        #endregion
+
+        #region MonsterClear
+
+        public static void MonsterClear()
+        {
+            //window size x159,y45
+            //Player Stats
+            // bottom left coordinate x=113,y=42
+            //bottom right coordinate x=153,y=42
+            //top left coordinate x=113,y=26
+            //top right coordinate x=153,y=26
+            const int MENU_START_X = 113;
+            const int MENU_END_X = 153;
+            const int MENU_LOWER_Y = 42;
+            const int MENU_UPPER_Y = 26;
+            for (int i = 0; i < MENU_LOWER_Y; i++)
+            {
+                Console.SetCursorPosition(MENU_START_X, i + MENU_UPPER_Y);
+                Console.WriteLine("                                          ");
+            }
+        }
+
         #endregion
 
     }
