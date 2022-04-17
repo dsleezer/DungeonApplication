@@ -8,11 +8,14 @@ namespace DungeonLibrary
 {
     public class EnemyWarehouse
     {
-
+        #region GenerateMonster
+        /// <summary>
+        /// Selects a Monster based on Player Level
+        /// </summary>
+        /// <param name="player">The Player character</param>
+        /// <returns>Selected Monster</returns>
         public static Monster GenerateMonster(Player player)
         {
-
-
             Monster flyingcat = new Monster("Flying Cat", 4, 12, 16, 10, 9, 9, 2, 2, 18, 10, 200, "Dexterity", "A housecat with wings.");
             Monster flumph = new Monster("Flumph", 8, 14, 16, 12, 10, 10, 2, 8, 4, 12, 25, "Dexterity", "The childlike whimsy of it hides the\nintent of it's tentacles.");
             Monster kobold = new Monster("Kobold", 8, 8, 16, 10, 11, 11, 3, 7, 4, 12, 25, "Dexterity", "A small humanoid reptile.");
@@ -40,7 +43,6 @@ namespace DungeonLibrary
             Monster hydra = new Monster("Hydra", 20, 2, 12, 20, 140, 140, 12, 30, 8, 15, 180, "Strength", "A three headed serpent with\nsharp teeth.");
             Monster remorhaz = new Monster("Remorhaz", 24, 4, 14, 22, 160, 16, 13, 35, 11, 17, 200, "Strength", "Hundreds of legs support\nthis massive centipede.");
 
-
             List<Monster> level1 = new List<Monster>() { flyingcat, flumph, kobold, magmin, troglodyt, modron, skeleton };
             List<Monster> level3 = new List<Monster>() { flyingcat, flumph, kobold, magmin, troglodyt, modron, skeleton, hobgoblin, gnoll, dryad, willOWisp, bandit, zombie };
             List<Monster> level5 = new List<Monster>() { flyingcat, skeleton, zombie, hobgoblin, gnoll, dryad, willOWisp, bandit, zombie, harpy, warewolf, basilisk, griffon };
@@ -52,7 +54,6 @@ namespace DungeonLibrary
             Random roll = new Random();
 
             Monster activeMonster = skeleton;
-
 
             if (player.Level >= 13)
             {
@@ -83,10 +84,28 @@ namespace DungeonLibrary
                 activeMonster = level1[roll.Next(level1.Count)];
             }
 
-
             return activeMonster;
         }
+        #endregion
+        /// <summary>
+        /// Adds a random 1-20 int used to increase the encounter chance.
+        /// </summary>
+        /// <returns></returns>
+        public static int MovementAdd()
+        {
+            Random random = new Random();
 
+            int roll = random.Next(1, 20);
+
+            return roll;
+        }
+        public static int RestAdd()
+        {
+            Random random = new Random();
+
+            int roll = random.Next(20, 40);
+
+            return roll;
+        }
     }
 }
-

@@ -16,15 +16,18 @@ namespace DungeonLibrary
             get { return _mapX; }
             set
             {
-                if (MapX > 9)
+                if (value > 9)
                 {
                     _mapX = 9;
+                }
+                else if (value < 1)
+                {
+                    _mapX = 1;
                 }
                 else
                 {
                     _mapX = value;
                 }
-
             }
         }
         public int MapY
@@ -32,9 +35,13 @@ namespace DungeonLibrary
             get { return _mapY; }
             set
             {
-                if (MapY > 8)
+                if (value > 7)
                 {
-                    _mapY = 8;
+                    _mapY = 7;
+                }
+                else if (value < 1)
+                {
+                    _mapY = 1;
                 }
                 else
                 {

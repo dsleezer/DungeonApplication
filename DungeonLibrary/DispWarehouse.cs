@@ -204,12 +204,12 @@ namespace DungeonLibrary
         public static void ShowControl()
         {
             //window size x159,y45
-            //Player Stats
-            // bottom left coordinate x=58,y=38
+            //Control Display
+            // bottom left coordinate x=51,y=38
             //bottom right coordinate x=102,y=38
-            //top left coordinate x=58,y=28
+            //top left coordinate x=51,y=28
             //top right coordinate x=102,y=28
-            const int MENU_START_X = 58;
+            const int MENU_START_X = 51;
             const int MENU_END_X = 102;
             const int MENU_LOWER_Y = 38;
             const int MENU_UPPER_Y = 28;
@@ -244,6 +244,7 @@ namespace DungeonLibrary
             Console.WriteLine("╗");
             Console.ResetColor();
 
+
             string seven = "┌───┐\n| 7 |\n└───┘";
             string eight = "┌───┐\n| 8 |\n└───┘";
             string nine = "┌───┐\n| 9 |\n└───┘";
@@ -254,6 +255,8 @@ namespace DungeonLibrary
             string two = "┌───┐\n| 2 |\n└───┘";
             string three = "┌───┐\n| 3 |\n└───┘";
 
+
+
             string[] stringSeven = seven.ToString().Split('\n');
             for (int i = 0; i < stringSeven.Length; i++)
             {
@@ -263,13 +266,13 @@ namespace DungeonLibrary
             string[] stringEight = eight.ToString().Split('\n');
             for (int i = 0; i < stringEight.Length; i++)
             {
-                Console.SetCursorPosition(MENU_START_X + 16, i + MENU_UPPER_Y + 1);
+                Console.SetCursorPosition(MENU_START_X + 18, i + MENU_UPPER_Y + 1);
                 Console.WriteLine(stringEight[i]);
             }
             string[] stringNine = nine.ToString().Split('\n');
             for (int i = 0; i < stringNine.Length; i++)
             {
-                Console.SetCursorPosition(MENU_START_X + 30, i + MENU_UPPER_Y + 1);
+                Console.SetCursorPosition(MENU_START_X + 35, i + MENU_UPPER_Y + 1);
                 Console.WriteLine(stringNine[i]);
             }
             string[] stringFour = four.ToString().Split('\n');
@@ -281,13 +284,13 @@ namespace DungeonLibrary
             string[] stringFive = five.ToString().Split('\n');
             for (int i = 0; i < stringFive.Length; i++)
             {
-                Console.SetCursorPosition(MENU_START_X + 16, i + MENU_UPPER_Y + 4);
+                Console.SetCursorPosition(MENU_START_X + 18, i + MENU_UPPER_Y + 4);
                 Console.WriteLine(stringFive[i]);
             }
             string[] stringSix = six.ToString().Split('\n');
             for (int i = 0; i < stringSix.Length; i++)
             {
-                Console.SetCursorPosition(MENU_START_X + 30, i + MENU_UPPER_Y + 4);
+                Console.SetCursorPosition(MENU_START_X + 35, i + MENU_UPPER_Y + 4);
                 Console.WriteLine(stringSix[i]);
             }
             string[] stringOne = one.ToString().Split('\n');
@@ -299,18 +302,82 @@ namespace DungeonLibrary
             string[] stringTwo = two.ToString().Split('\n');
             for (int i = 0; i < stringTwo.Length; i++)
             {
-                Console.SetCursorPosition(MENU_START_X + 16, i + MENU_UPPER_Y + 7);
+                Console.SetCursorPosition(MENU_START_X + 18, i + MENU_UPPER_Y + 7);
                 Console.WriteLine(stringTwo[i]);
             }
             string[] stringThree = three.ToString().Split('\n');
             for (int i = 0; i < stringThree.Length; i++)
             {
-                Console.SetCursorPosition(MENU_START_X + 30, i + MENU_UPPER_Y + 7);
+                Console.SetCursorPosition(MENU_START_X + 35, i + MENU_UPPER_Y + 7);
                 Console.WriteLine(stringThree[i]);
             }
         }
+        #endregion
+
+        #region BattleMenu
+
+        public static void BattleMenu()
+        {
+            // bottom left coordinate x=51,y=38
+            //bottom right coordinate x=102,y=38
+            //top left coordinate x=51,y=28
+            //top right coordinate x=102,y=28
+            const int MENU_START_X = 51;
+            const int MENU_UPPER_Y = 28;
+
+            Console.SetCursorPosition(MENU_START_X + 8, MENU_UPPER_Y + 2);
+            Console.WriteLine("Attack");
+            Console.SetCursorPosition(MENU_START_X + 24, MENU_UPPER_Y + 2);
+            Console.WriteLine("          ");
+            Console.SetCursorPosition(MENU_START_X + 41, MENU_UPPER_Y + 2);
+            Console.WriteLine("Run Away");
+            Console.SetCursorPosition(MENU_START_X + 8, MENU_UPPER_Y + 5);
+            Console.WriteLine("          ");
+            Console.SetCursorPosition(MENU_START_X + 24, MENU_UPPER_Y + 5);
+            Console.WriteLine("          ");
+            Console.SetCursorPosition(MENU_START_X + 41, MENU_UPPER_Y + 5);
+            Console.WriteLine("          ");
+            Console.SetCursorPosition(MENU_START_X + 8, MENU_UPPER_Y + 8);
+            Console.Write("Inventory");
+            Console.SetCursorPosition(MENU_START_X + 24, MENU_UPPER_Y + 8);
+            Console.WriteLine("          ");
+            Console.SetCursorPosition(MENU_START_X + 41, MENU_UPPER_Y + 8);
+            Console.WriteLine("Exit");
+        }
 
         #endregion
+
+        #region MapMenu
+        public static void MapMenu()
+        {
+            // bottom left coordinate x=51,y=38
+            //bottom right coordinate x=102,y=38
+            //top left coordinate x=51,y=28
+            //top right coordinate x=102,y=28
+            const int MENU_START_X = 51;
+            const int MENU_UPPER_Y = 28;
+
+            Console.SetCursorPosition(MENU_START_X + 8, MENU_UPPER_Y + 2);
+            Console.WriteLine("          ");
+            Console.SetCursorPosition(MENU_START_X + 24, MENU_UPPER_Y + 2);
+            Console.WriteLine("Move North");
+            Console.SetCursorPosition(MENU_START_X + 41, MENU_UPPER_Y + 2);
+            Console.WriteLine("          ");
+            Console.SetCursorPosition(MENU_START_X + 8, MENU_UPPER_Y + 5);
+            Console.WriteLine("Move West");
+            Console.SetCursorPosition(MENU_START_X + 24, MENU_UPPER_Y + 5);
+            Console.WriteLine("Rest");
+            Console.SetCursorPosition(MENU_START_X + 41, MENU_UPPER_Y + 5);
+            Console.WriteLine("Move East");
+            Console.SetCursorPosition(MENU_START_X + 8, MENU_UPPER_Y + 8);
+            Console.WriteLine("Inventory");
+            Console.SetCursorPosition(MENU_START_X + 24, MENU_UPPER_Y + 8);
+            Console.WriteLine("Move South");
+            Console.SetCursorPosition(MENU_START_X + 41, MENU_UPPER_Y + 8);
+            Console.WriteLine("Exit");
+        }
+        #endregion
+
     }
 }
 

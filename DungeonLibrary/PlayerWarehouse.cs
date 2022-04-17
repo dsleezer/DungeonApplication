@@ -352,7 +352,8 @@ namespace DungeonLibrary
             string nameConfirmation = "";
             do
             {
-                Console.WriteLine("What is your name?");
+                Console.SetCursorPosition(31, 28);
+                Console.Write("What is your name? ");
                 pName = Console.ReadLine().ToString();
                 mainPlayer.Name = pName;
                 mainString = mainPlayer.ToString().Split('\n');
@@ -361,7 +362,10 @@ namespace DungeonLibrary
                     Console.SetCursorPosition(71, i + 11);
                     Console.WriteLine(mainString[i]);
                 }
-                Console.WriteLine($"Your name is {pName}.\n\nDo you want to keep this? Y/N");
+                Console.SetCursorPosition(31, 30);
+                Console.WriteLine($"Your name is {pName}.");
+                Console.SetCursorPosition(31, 31);
+                Console.WriteLine("Do you want to keep this? Y/N");
                 nameConfirmation = Console.ReadKey(true).Key.ToString();
 
 

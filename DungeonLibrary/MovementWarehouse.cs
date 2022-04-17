@@ -45,47 +45,46 @@ namespace DungeonLibrary
         {
             if (player.Map.MapX == 1)
             {
-                return 119;
+                return 118;
             }
             else if (player.Map.MapX == 2)
             {
-                return 123;
+                return 122;
             }
             else if (player.Map.MapX == 3)
             {
-                return 127;
+                return 126;
             }
             else if (player.Map.MapX == 4)
             {
-                return 131;
+                return 130;
             }
             else if (player.Map.MapX == 5)
             {
-                return 135;
+                return 134;
             }
             else if (player.Map.MapX == 6)
             {
-                return 139;
+                return 138;
             }
             else if (player.Map.MapX == 7)
             {
-                return 143;
+                return 142;
             }
             else if (player.Map.MapX == 8)
             {
-                return 147;
+                return 146;
             }
             else if (player.Map.MapX == 9)
             {
-                return 151;
+                return 150;
             }
             else
             {
-                return 119;
+                return 118;
             }
-
         }
-        public static void MoveUp(Player player)
+        public static void MoveNorth(Player player)
         {
             Console.SetCursorPosition(MapX(player),MapY(player));
             Console.Write(" ");
@@ -93,7 +92,7 @@ namespace DungeonLibrary
             Console.SetCursorPosition(MapX(player), MapY(player));
             Console.Write("P");
         }
-        public static void MoveDown(Player player)
+        public static void MoveSouth(Player player)
         {
             Console.SetCursorPosition(MapX(player),MapY(player));
             Console.Write(" ");
@@ -101,19 +100,24 @@ namespace DungeonLibrary
             Console.SetCursorPosition(MapX(player), MapY(player));
             Console.Write("P");
         }
-        public static void MoveRight(Player player)
+        public static void MoveEast(Player player)
         {
-            Console.SetCursorPosition(MapX(player),MapY(player));
+            Console.SetCursorPosition(MapX(player), MapY(player));
             Console.Write(" ");
             player.Map.MapX++;
             Console.SetCursorPosition(MapX(player), MapY(player));
             Console.Write("P");
         }
-        public static void MoveLeft(Player player)
+        public static void MoveWest(Player player)
         {
-            Console.SetCursorPosition(MapX(player),MapY(player));
+            Console.SetCursorPosition(MapX(player), MapY(player));
             Console.Write(" ");
-            player.Map.MapX--;
+            player.Map.MapX-= 1;
+            Console.SetCursorPosition(MapX(player), MapY(player));
+            Console.Write("P");
+        }
+        public static void CurrentPosition(Player player)
+        {
             Console.SetCursorPosition(MapX(player), MapY(player));
             Console.Write("P");
         }

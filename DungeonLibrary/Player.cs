@@ -53,7 +53,14 @@ namespace DungeonLibrary
             get { return _currentHealth; }
             set
             {
+                if(CurrentHealth > MaxHealth)
+                {
                 _currentHealth = MaxHealth;
+                }
+                else
+                {
+                    _currentHealth = value;
+                }
             }
         }
 
@@ -71,7 +78,7 @@ namespace DungeonLibrary
             Dexterity = dexterity + PClass.Dexterity + PRace.Dexterity;
             Constitution = constitution + PClass.Constitution + PRace.Constitution;
             MaxHealth = 10;
-            CurrentHealth = 10;
+            CurrentHealth = MaxHealth;
             Armor = 0;
             Map = map;
         }
