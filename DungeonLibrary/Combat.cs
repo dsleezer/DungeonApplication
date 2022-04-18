@@ -16,6 +16,8 @@ namespace DungeonLibrary
 
                 defender.CurrentHealth -= damageDealt;
 
+                textLine = DispWarehouse.TextDisplay(textLine, attacker.CurrentHealth.ToString());
+
                 Console.ForegroundColor = ConsoleColor.Red;
                 textLine = DispWarehouse.TextDisplay(textLine, $"{attacker.Name} hit {defender.Name} for {damageDealt} damage!");
 
@@ -69,7 +71,7 @@ namespace DungeonLibrary
                 {
 
                     textLine = DoAttack(monster, player, textLine);
-                    if (monster.CurrentHealth > 0)
+                    if (player.CurrentHealth > 0)
                     {
                         textLine = DoAttack(player, monster, textLine);
                     }

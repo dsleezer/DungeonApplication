@@ -388,13 +388,17 @@ namespace DungeonLibrary
             ////top right coordinate x=97,y=18
             const int MENU_START_X = 46;
             const int MENU_END_X = 97;
-            const int MENU_LOWER_Y = 30;
+            const int MENU_LOWER_Y = 26;
             const int MENU_UPPER_Y = 8;
 
             int lineTracker = 0;
             string[] textString = inputString.Split("\n");
             for (int i = 0; i < textString.Length; i++)
             {
+                if (textLine + MENU_UPPER_Y >= MENU_LOWER_Y)
+                {
+                    textLine = 0;
+                }
 
                 Console.SetCursorPosition(MENU_START_X, MENU_UPPER_Y + textLine);
                 Console.WriteLine("                                                     ");
@@ -405,10 +409,6 @@ namespace DungeonLibrary
 
                 textLine++;
 
-                if (textLine + MENU_UPPER_Y == MENU_LOWER_Y)
-                {
-                    textLine = 0;
-                }
 
                 lineTracker = textLine;
             }

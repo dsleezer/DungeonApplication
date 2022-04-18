@@ -10,7 +10,6 @@ namespace DungeonLibrary
     {
         //FIELDS
 
-        private int _currentHealth;
         private int _maxHealth;
         private int _armor;
 
@@ -46,21 +45,6 @@ namespace DungeonLibrary
             set
             {
                 _maxHealth = value + PClass.HealthModifier + (Constitution - 10) / 2;
-            }
-        }
-        public int CurrentHealth
-        {
-            get { return _currentHealth; }
-            set
-            {
-                //if(value > MaxHealth)
-                //{
-                //_currentHealth = MaxHealth;
-                //}
-                //else
-                //{
-                    _currentHealth = value;
-                //}
             }
         }
 

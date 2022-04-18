@@ -139,7 +139,7 @@ namespace Dungeon
                             DispWarehouse.ShowMap();
                             DispWarehouse.ShowControl();
                             DispWarehouse.BattleMenu();
-                            DispWarehouse.ShowPlayer(mainPlayer);
+                            MovementWarehouse.CurrentPosition(mainPlayer);
 
                             //TODO: display the room
 
