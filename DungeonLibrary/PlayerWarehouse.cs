@@ -312,6 +312,9 @@ namespace DungeonLibrary
             MapCoordinates pMap = new MapCoordinates(1, 1);
 
             Player mainPlayer = new Player(pName, pClass, pRace, 10, 10, 10, 10, pMap);
+            mainPlayer.CurrentHealth = mainPlayer.MaxHealth;
+
+
             #endregion
 
             #region Name Selection
@@ -347,7 +350,7 @@ namespace DungeonLibrary
 
 
 
-
+            
             bool nameMenu = true;
             string nameConfirmation = "";
             do
@@ -393,61 +396,63 @@ namespace DungeonLibrary
         }
 
 
-        public static void LevelMenu(Player player, int textLine)
+        public static void LevelMenu(Player player, TextTracker textLine)
         {
-            textLine = DispWarehouse.TextDisplay(textLine, "Congratulations! You have leveled up!");
+
             for (int i = 2; i > 0; i--)
             {
+            DispWarehouse.TextDisplayClear(textLine);
+            textLine.LineNumber = 0;
+            DispWarehouse.TextDisplay(textLine, "Congratulations! You have leveled up!");
                 bool statSelect = true;
                 string menuSelect = "";
 
                 do
                 {
-                    textLine = DispWarehouse.TextDisplay(textLine, $"\nYou have {i} additional stat points to apply.\n" +
+                    DispWarehouse.TextDisplay(textLine, $"\nYou have {i} additional stat points to apply.\n" +
                         "1) Strength\n" +
                         "2) Intelligence\n" +
                         "3) Dexterity\n" +
                         "4) Constitution");
-                    textLine = DispWarehouse.TextDisplay(textLine, "Choose which stat to increase: ");
+                    DispWarehouse.TextDisplay(textLine, "Choose which stat to increase: ");
                     menuSelect = Console.ReadKey(true).Key.ToString();
-                    Console.Clear();
                     switch (menuSelect)
                     {
                         case "D1":
                         case "NumPad1":
-                            textLine = DispWarehouse.TextDisplay(textLine, "+1 Strength\n");
+                            DispWarehouse.TextDisplay(textLine, "+1 Strength\n");
                             player.Strength++;
                             break;
                         case "D2":
                         case "NumPad2":
-                            textLine = DispWarehouse.TextDisplay(textLine, "+1 Intelligence\n");
+                            DispWarehouse.TextDisplay(textLine, "+1 Intelligence\n");
                             player.Intelligence++;
                             break;
                         case "D3":
                         case "NumPad3":
-                            textLine = DispWarehouse.TextDisplay(textLine, "+1 Dexterity\n");
+                            DispWarehouse.TextDisplay(textLine, "+1 Dexterity\n");
                             player.Dexterity++;
                             break;
                         case "D4":
                         case "NumPad4":
-                            textLine = DispWarehouse.TextDisplay(textLine, "+1 Constitution\n");
+                            DispWarehouse.TextDisplay(textLine, "+1 Constitution\n");
                             player.Constitution++;
                             break;
                         default:
-                            textLine = DispWarehouse.TextDisplay(textLine, "Invalid Input\n");
+                            DispWarehouse.TextDisplay(textLine, "Invalid Input\n");
                             statSelect = !statSelect;
                             break;
                     }
                 } while (!statSelect);
             }
-            player.Exp = (player.Level == 10 ? -1000 : - player.Level * 100);
+            player.Exp -= (player.Level == 10 ? 1000 : player.Level * 100);
             player.Level++;
-            player.MaxHealth = player.MaxHealth;
+            player.MaxHealth = player.MaxHealth + player.PClass.HealthModifier + (player.Constitution - 10) / 2;
             player.CurrentHealth = player.MaxHealth;
         }
 
 
-        public static void LevelUp(Player player, int textLine)
+        public static void LevelUp(Player player, TextTracker textLine)
         {
             if (player.Level == 1 && player.Exp >= 100)
             {

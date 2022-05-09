@@ -369,8 +369,9 @@ namespace DungeonLibrary
             Console.WriteLine("Rest");
             Console.SetCursorPosition(MENU_START_X + 41, MENU_UPPER_Y + 5);
             Console.WriteLine("Move East");
-            Console.SetCursorPosition(MENU_START_X + 8, MENU_UPPER_Y + 8);
-            Console.WriteLine("Inventory");
+            //TODO: Create Inventory
+            //Console.SetCursorPosition(MENU_START_X + 8, MENU_UPPER_Y + 8);
+            //Console.WriteLine("Inventory");
             Console.SetCursorPosition(MENU_START_X + 24, MENU_UPPER_Y + 8);
             Console.WriteLine("Move South");
             Console.SetCursorPosition(MENU_START_X + 41, MENU_UPPER_Y + 8);
@@ -380,7 +381,7 @@ namespace DungeonLibrary
 
         #region TextDisplay
 
-        public static int TextDisplay(int textLine, string inputString)
+        public static void TextDisplay(TextTracker textLine, string inputString)
         {
             //// bottom left coordinate x=46,y=30
             ////bottom right coordinate x=97,y=30
@@ -391,31 +392,49 @@ namespace DungeonLibrary
             const int MENU_LOWER_Y = 26;
             const int MENU_UPPER_Y = 8;
 
-            int lineTracker = 0;
             string[] textString = inputString.Split("\n");
             for (int i = 0; i < textString.Length; i++)
             {
-                if (textLine + MENU_UPPER_Y >= MENU_LOWER_Y)
+                if (textLine.LineNumber + MENU_UPPER_Y >= MENU_LOWER_Y)
                 {
-                    textLine = 0;
+                    textLine.LineNumber = 0;
                 }
 
-                Console.SetCursorPosition(MENU_START_X, MENU_UPPER_Y + textLine);
+                Console.SetCursorPosition(MENU_START_X, MENU_UPPER_Y + textLine.LineNumber);
                 Console.WriteLine("                                                     ");
-                Console.SetCursorPosition(MENU_START_X, MENU_UPPER_Y + textLine);
+                Console.SetCursorPosition(MENU_START_X, MENU_UPPER_Y + textLine.LineNumber);
                 Console.WriteLine(textString[i]);
 
                 Thread.Sleep(400);
 
-                textLine++;
-
-
-                lineTracker = textLine;
+                textLine.LineNumber++;
             }
-            return lineTracker;
         }
 
         #endregion
+
+        #region TextDisplayClear
+        public static void TextDisplayClear(TextTracker textLine)
+        {
+            //// bottom left coordinate x=46,y=30
+            ////bottom right coordinate x=97,y=30
+            ////top left coordinate x=46,y=
+            ////top right coordinate x=97,y=18
+            const int MENU_START_X = 46;
+            const int MENU_END_X = 97;
+            const int MENU_LOWER_Y = 26;
+            const int MENU_UPPER_Y = 8;
+
+            for (int i = MENU_UPPER_Y; i >= MENU_LOWER_Y; i++)
+            {
+                Console.SetCursorPosition(MENU_START_X, i);
+                Console.WriteLine("                                                    ");
+                
+            }
+            textLine.LineNumber = 0;
+        }
+        #endregion
+
 
         #region MonsterClear
 
@@ -427,10 +446,10 @@ namespace DungeonLibrary
             //bottom right coordinate x=153,y=42
             //top left coordinate x=113,y=26
             //top right coordinate x=153,y=26
-            const int MENU_START_X = 113;
+            const int MENU_START_X = 114;
             const int MENU_END_X = 153;
-            const int MENU_LOWER_Y = 42;
-            const int MENU_UPPER_Y = 26;
+            const int MENU_LOWER_Y = 20;
+            const int MENU_UPPER_Y = 2;
             for (int i = 0; i < MENU_LOWER_Y; i++)
             {
                 Console.SetCursorPosition(MENU_START_X, i + MENU_UPPER_Y);
@@ -439,6 +458,42 @@ namespace DungeonLibrary
         }
 
         #endregion
+
+
+        #region PlayerClear
+
+        public static void PlayerClear()
+        {
+
+        //Player Stats
+        // bottom left coordinate x=5,y=43
+        //bottom right coordinate x=30,y=43
+        //top left coordinate x=5,y=25
+        //top right coordinate x=30,y=25
+        const int MENU_START_X = 5;
+        const int MENU_END_X = 30;
+        const int MENU_LOWER_Y = 42;
+        const int MENU_UPPER_Y = 24;
+
+            for (int i = 0; i < MENU_LOWER_Y; i++)
+            {
+                Console.SetCursorPosition(MENU_START_X, i + MENU_UPPER_Y);
+                Console.WriteLine("                                          ");
+            }
+
+
+        }
+
+        #endregion
+
+        public static void TextWrite(string text)
+        {
+            foreach (char item in text)
+            {
+                Console.Write(item);
+                Thread.Sleep(25);
+            }
+        }
 
     }
 }

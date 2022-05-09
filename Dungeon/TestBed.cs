@@ -14,12 +14,6 @@ namespace Dungeon
 
             Console.SetWindowSize(159, 45);
 
-            #region Main Layout
-
-
-
-
-
             #region Asset Initialization
 
             Weapon greatsword = new Weapon("Greatsword", 2, 12, 3, 4, true, WeaponType.Greatsword);
@@ -319,7 +313,7 @@ namespace Dungeon
 
             #endregion
 
-            //#region Name Selection
+            #region Name Selection
 
 
             //bool nameMenu = true;
@@ -346,9 +340,9 @@ namespace Dungeon
             //Console.WriteLine(player1);
 
 
-            //#endregion
+            #endregion
 
-            //#region Monster Creation
+            #region Monster Creation
 
             Monster flyingcat = new Monster("Flying Cat", 4, 12, 16, 10, 9, 9, 2, 2, 18, 10, 200, "Dexterity", "A housecat with wings.");
             Monster flumph = new Monster("Flumph", 8, 14, 16, 12, 10, 10, 2, 8, 4, 12, 25, "Dexterity", "The childlike whimsy of it hides the\nintent of it's tentacles.");
@@ -485,7 +479,7 @@ namespace Dungeon
             //    Console.WriteLine(stringPlayer[i]);
             //}
             #endregion
-            DispWarehouse.ShowPlayer(mainPlayer);
+            //  DispWarehouse.ShowPlayer(mainPlayer);
             #region MonsterMenuDisplay
 
             ////window size x159,y45
@@ -537,7 +531,7 @@ namespace Dungeon
             //}
 
             #endregion
-            DispWarehouse.ShowMonster(remorhaz);
+            // DispWarehouse.ShowMonster(remorhaz);
             #region MapDisplay
 
             ////window size x159,y45
@@ -609,7 +603,7 @@ namespace Dungeon
 
 
             #endregion
-            DispWarehouse.ShowMap();
+            // DispWarehouse.ShowMap();
             #region ControlDisplay
 
             ////window size x159,y45
@@ -750,7 +744,7 @@ namespace Dungeon
 
 
             #endregion
-            DispWarehouse.ShowControl();
+            // DispWarehouse.ShowControl();
             #region MapMenu
 
 
@@ -785,8 +779,8 @@ namespace Dungeon
             //Console.WriteLine("Exit");
 
             #endregion
-            DispWarehouse.MapMenu();
-            Console.ReadKey(true);
+            // DispWarehouse.MapMenu();
+            // Console.ReadKey(true);
             #region BattleMenu
 
 
@@ -818,56 +812,149 @@ namespace Dungeon
             //Console.WriteLine("Exit");
 
             #endregion
-            DispWarehouse.BattleMenu();
+            //DispWarehouse.BattleMenu();
 
             #region TextDisplay
 
-            //// bottom left coordinate x=46,y=30
-            ////bottom right coordinate x=97,y=30
-            ////top left coordinate x=46,y=
-            ////top right coordinate x=97,y=18
-            const int MENU_START_X = 46;
-            const int MENU_END_X = 97;
-            const int MENU_LOWER_Y = 30;
-            const int MENU_UPPER_Y = 8;
+            ////// bottom left coordinate x=46,y=30
+            //////bottom right coordinate x=97,y=30
+            //////top left coordinate x=46,y=
+            //////top right coordinate x=97,y=18
+            //const int MENU_START_X = 46;
+            //const int MENU_END_X = 97;
+            //const int MENU_LOWER_Y = 30;
+            //const int MENU_UPPER_Y = 8;
 
-            int lineTracker = 0;
-            int textLine = 0;
-            string inputString = "Hello\nThis is a Test\nof the text\n\nDisplay.";
-            string[] textString = inputString.Split("\n");
-            for (int i = 0; i < textString.Length; i++)
-            {
+            //int lineTracker = 0;
+            //int textLine = 0;
+            //string inputString = "Hello\nThis is a Test\nof the text\n\nDisplay.";
+            //string[] textString = inputString.Split("\n");
+            //for (int i = 0; i < textString.Length; i++)
+            //{
 
-                Console.SetCursorPosition(MENU_START_X, MENU_UPPER_Y + textLine);
-                Console.WriteLine("                                                     ");
-                Console.SetCursorPosition(MENU_START_X, MENU_UPPER_Y + textLine);
-                Console.WriteLine(textString[i]);
+            //    Console.SetCursorPosition(MENU_START_X, MENU_UPPER_Y + textLine);
+            //    Console.WriteLine("                                                     ");
+            //    Console.SetCursorPosition(MENU_START_X, MENU_UPPER_Y + textLine);
+            //    Console.WriteLine(textString[i]);
 
-                Thread.Sleep(400);
+            //    Thread.Sleep(400);
 
-                textLine++;
+            //    textLine++;
 
-                if(textLine == MENU_LOWER_Y)
-                {
-                    textLine = 0;
-                }
+            //    if(textLine == MENU_LOWER_Y)
+            //    {
+            //        textLine = 0;
+            //    }
 
-                lineTracker = textLine;
-            }
-            
+            //    lineTracker = textLine;
+            //}
+
 
 
             #endregion
 
+            //Console.ReadKey(true);
+
+            #region Title Screen
+
+            //Console.SetCursorPosition(31, 2);
+            //Console.WriteLine(@"
+            //                   ╔═════════════════════════════════════════════════════════════════════════════════════════════════╗
+            //                   ║        ____  _  _  ____    __    ____  ___  ____  __ _  ____     __  ____     ___  _  _         ║
+            //                   ║       (_  _)/ )( \(  __)  (  )  (  __)/ __)(  __)(  ( \(    \   /  \(  __)   / __)/ )( \        ║
+            //                   ║         )(  ) __ ( ) _)   / (_/\ ) _)( (_ \ ) _) /    / ) D (  (  O )) _)   ( (__ )    (        ║
+            //                   ║        (__) \_)(_/(____)  \____/(____)\___/(____)\_)__)(____/   \__/(__)     \___)\_)(_/        ║
+            //                   ║                                                                                                 ║
+            //                   ╚═════════════════════════════════════════════════════════════════════════════════════════════════╝");
+
+            //string menu = "1) New Game\n2) Exit Game";  //\n2) High Score\n3) Test Mode
+            //string[] stringMenu = menu.ToString().Split('\n');
+            //for (int i = 0; i < stringMenu.Length; i++)
+            //{
+            //    Console.SetCursorPosition(70, i + 20);
+            //    Console.WriteLine(stringMenu[i]);
+            //}
+
+            //string selection = "";
+            //bool mainMenu = true;
+            //string exitConfirmation = "";
+            //do
+            //{
+
+
+            //    selection = Console.ReadKey(true).Key.ToString();
+            //    switch (selection)
+            //    {
+            //        case "D1":  //New Game
+            //        case "NumPad1":
+            //            mainMenu = !mainMenu;
+
+            //            break;
+            //        case "D2":
+            //        case "NumPad2":
+            //        case "ESCAPE":
+            //            Console.SetCursorPosition(31, 25);
+            //            Console.WriteLine("Are you sure you would like to exit? Y/N");
+            //            exitConfirmation = Console.ReadKey(true).Key.ToString().ToUpper();
+
+            //            switch (exitConfirmation)
+            //            {
+            //                case "Y":
+            //                case "ESCAPE":
+            //                    Environment.Exit(0);
+            //                    break;
+            //                default:
+            //                    break;
+            //            }
+            //                break;
+            //            //case "D3":
+            //            //case "NumPad3":
+            //            //    mainMenu = !mainMenu;
+
+            //            //    break;
+            //            //case "D4":
+            //            //case "NumPad4":
+            //            //    mainMenu = !mainMenu;
+
+            //            //break;
+
+            //        default:
+            //            Console.SetCursorPosition(31, 25);
+            //            Console.WriteLine("                                ");
+            //            Thread.Sleep(20);
+            //            Console.SetCursorPosition(31, 25);
+            //            Console.WriteLine("Invalid entry, please try again.");
+            //            break;
+            //    }
+
+            //} while (mainMenu);
+            #endregion
+            Console.WriteLine(@"
+                               ╔═════════════════════════════════════════════════════════════════════════════════════════════════╗
+                               ║           ___  __    __  ____  ____  __   __ _     __   __ _  ____    ____  _  _  ____          ║
+                               ║          / __)(  )  (  )(  __)(_  _)/  \ (  ( \   / _\ (  ( \(    \  (_  _)/ )( \(  __)         ║
+                               ║         ( (__ / (_/\ )(  ) _)   )( (  O )/    /  /    \/    / ) D (    )(  ) __ ( ) _)          ║
+                               ║          \___)\____/(__)(__)   (__) \__/ \_)__)  \_/\_/\_)__)(____/   (__) \_)(_/(____)         ║
+                               ║                             ____  __     __   _  _  ____  ____  ____                            ║
+                               ║                            / ___)(  )   / _\ ( \/ )(  __)(  _ \/ ___)                           ║
+                               ║                            \___ \/ (_/\/    \ )  /  ) _)  )   /\___ \                           ║
+                               ║                            (____/\____/\_/\_/(__/  (____)(__\_)(____/                           ║
+                               ║                                                                                                 ║
+                               ╚═════════════════════════════════════════════════════════════════════════════════════════════════╝");
 
 
 
-            Console.ReadKey(true);
+            //string text = "hello world...";
+            //Console.SetCursorPosition(31, 25);
+            //foreach (char item in text)
+            //{
+            //    Console.Write(item);
+            //    Thread.Sleep(75);                 
+            //}
+
+            OpeningMenu.FirstStory();
+
 
         }
-
-        
-
-
     }
 }

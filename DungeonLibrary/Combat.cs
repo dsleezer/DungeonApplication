@@ -8,7 +8,7 @@ namespace DungeonLibrary
 {
     public class Combat
     {
-        public static int DoAttack(Character attacker, Character defender, int textLine)
+        public static void DoAttack(Character attacker, Character defender, TextTracker textLine)
         {
             if ((attacker.CalcHitChance() >= defender.CalcBlock()))
             {
@@ -16,42 +16,39 @@ namespace DungeonLibrary
 
                 defender.CurrentHealth -= damageDealt;
 
-                textLine = DispWarehouse.TextDisplay(textLine, attacker.CurrentHealth.ToString());
-
                 Console.ForegroundColor = ConsoleColor.Red;
-                textLine = DispWarehouse.TextDisplay(textLine, $"{attacker.Name} hit {defender.Name} for {damageDealt} damage!");
+                DispWarehouse.TextDisplay(textLine, $"{attacker.Name} hit {defender.Name} for {damageDealt} damage!");
 
                 Console.ResetColor();
                 
             }
             else
             {
-                textLine = DispWarehouse.TextDisplay(textLine, $"{attacker.Name} missed!");
+                DispWarehouse.TextDisplay(textLine, $"{attacker.Name} missed!");
                 
             }
             Thread.Sleep(30);
-            return textLine;
         }
-        public static int DoBattle(Player player, Monster monster, int textLine)
+        public static void DoBattle(Player player, Monster monster, TextTracker textLine)
         {
             if (player.CalcInitiative() >= monster.CalcInitiative() || player.EquippedWeapon.WeaponType == WeaponType.Longbow)
             {
                 if (player.EquippedWeapon.WeaponType == WeaponType.Dagger)
                 {
-                    textLine = DoAttack(player, monster, textLine);
-                    textLine = DoAttack(player, monster, textLine);
+                    DoAttack(player, monster, textLine);
+                    DoAttack(player, monster, textLine);
                     if (monster.CurrentHealth > 0)
                     {
-                        textLine = DoAttack(monster, player, textLine);
+                        DoAttack(monster, player, textLine);
                     }
                 }
                 else
                 {
 
-                    textLine = DoAttack(player, monster, textLine);
+                    DoAttack(player, monster, textLine);
                     if (monster.CurrentHealth > 0)
                     {
-                        textLine = DoAttack(monster, player, textLine);
+                        DoAttack(monster, player, textLine);
                     }
                 }
             }
@@ -59,25 +56,24 @@ namespace DungeonLibrary
             {
                 if (player.EquippedWeapon.WeaponType == WeaponType.Dagger)
                 {
-                    textLine = DoAttack(monster, player, textLine);
+                    DoAttack(monster, player, textLine);
                     
                     if (monster.CurrentHealth > 0)
                     {
-                        textLine = DoAttack(player, monster, textLine);
-                        textLine = DoAttack(player, monster, textLine);
+                        DoAttack(player, monster, textLine);
+                        DoAttack(player, monster, textLine);
                     }
                 }
                 else
                 {
 
-                    textLine = DoAttack(monster, player, textLine);
+                    DoAttack(monster, player, textLine);
                     if (player.CurrentHealth > 0)
                     {
-                        textLine = DoAttack(player, monster, textLine);
+                        DoAttack(player, monster, textLine);
                     }
                 }
-            }
-            return textLine;
+            }           
         }
     }
 }

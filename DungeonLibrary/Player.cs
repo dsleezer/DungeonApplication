@@ -10,7 +10,6 @@ namespace DungeonLibrary
     {
         //FIELDS
 
-        private int _maxHealth;
         private int _armor;
 
 
@@ -39,14 +38,6 @@ namespace DungeonLibrary
                 }
             }
         }
-        public int MaxHealth
-        {
-            get { return _maxHealth; }
-            set
-            {
-                _maxHealth = value + PClass.HealthModifier + (Constitution - 10) / 2;
-            }
-        }
 
         //CONSTRUCTORS
         public Player(string name, PlayerClass pClass, Race pRace, int strength, int intelligence, int dexterity, int constitution, MapCoordinates map) : base(name, strength, intelligence, dexterity, constitution)
@@ -61,7 +52,7 @@ namespace DungeonLibrary
             Intelligence = intelligence + PClass.Intelligence + PRace.Intelligence;
             Dexterity = dexterity + PClass.Dexterity + PRace.Dexterity;
             Constitution = constitution + PClass.Constitution + PRace.Constitution;
-            MaxHealth = 10;
+            MaxHealth = 10 + PClass.HealthModifier + (Constitution - 10) / 2;
             CurrentHealth = MaxHealth;
             Armor = 0;
             Map = map;

@@ -9,7 +9,7 @@ namespace DungeonLibrary
     public abstract class Character
     {
         //FIELDS
-        private int _currentHealth
+        private int _currentHealth;
         //PROPERTIES
         public string Name { get; set; }
         public int Exp { get; set; }
@@ -44,8 +44,8 @@ namespace DungeonLibrary
             Intelligence = intelligence;
             Dexterity = dexterity;
             Constitution = constitution;
-            MaxHealth = 1;
-            CurrentHealth = 1;
+            MaxHealth = 20;
+            CurrentHealth = MaxHealth;
             Exp = 0;
             Armor = 0;
         }
