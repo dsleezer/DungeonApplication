@@ -18,6 +18,12 @@ namespace Dungeon
             //Player Creation
             Player mainPlayer = PlayerWarehouse.CreatePlayer();
 
+            bool lichAlive = true;
+            bool balorAlive = true;
+
+            Boss balor = new Boss("Balor", 26, 20, 15, 22, 250, 250, 18, 45, 13, 19, 2000, "Strength", "A fiery winged demon wielding a flaming \nwhip and sword of lightning");
+            Boss lich = new Boss("Lich", 11, 20, 16, 16, 135, 135, 16, 35, 10, 17, 2000, "Intelligence", "An undead wizard of vast power");
+
             //Local Map Area
             bool loopArea = true;
             do
@@ -27,6 +33,14 @@ namespace Dungeon
                 bool loopMovement = true;
                 DispWarehouse.ShowMap();
                 MovementWarehouse.CurrentPosition(mainPlayer);
+                if (lichAlive)
+                {
+                    MovementWarehouse.BossPosition(lich);
+                }
+                else if (lichAlive == false && balorAlive)
+                {
+                    MovementWarehouse.BossPosition(balor);
+                }
                 int encounterChance = 0;
 
                 do//MovementLoop
@@ -54,14 +68,6 @@ namespace Dungeon
                             MovementWarehouse.MoveSouth(mainPlayer);
                             encounterChance += EnemyWarehouse.MovementAdd();
                             break;
-                        //Inventory
-                        //TODO Create Inventory/Potion
-                        //case "D1":
-                        //case "NumPad1":
-
-                        //    break;
-
-                        //Exit
                         case "D4":
                         case "NumPad4":
                             MovementWarehouse.MoveWest(mainPlayer);
@@ -100,13 +106,36 @@ namespace Dungeon
                         default:
                             break;
                     }//end menu switch
+
+                    if (mainPlayer.Map.MapX == lich.Location.MapX && mainPlayer.Map.MapY == lich.Location.MapY && lichAlive == true)
+                    {
+                        loopMovement = false;
+                    }
+
+                    //Check to see if an enounter should occur and clear encounterChance.
+                    else if (encounterChance >= 35)
+                    {
+                        loopMovement = false;
+                        encounterChance = 0;
+                    }
+                    
                 } while (loopMovement);//end Movement loop
 
                 bool loopEncounter = true;
+                
 
                 do//encounter loop
                 {
                     Monster activeEnemy = EnemyWarehouse.GenerateMonster(mainPlayer);
+
+                    if (mainPlayer.Map.MapX == lich.Location.MapX && mainPlayer.Map.MapY == lich.Location.MapY && lichAlive == true)
+                    {
+                        activeEnemy = lich;
+                    }
+                    else if(mainPlayer.Map.MapX == lich.Location.MapX && mainPlayer.Map.MapY == lich.Location.MapY && lichAlive == false)
+                    {
+                        activeEnemy = balor;
+                    }
 
                     //TODO: Fix room name creation
                     //textLine = DispWarehouse.TextDisplay(textLine, RoomGenerator.RoomCreator(0));
@@ -165,6 +194,14 @@ namespace Dungeon
                                     //Clear Monster Display
                                     DispWarehouse.MonsterClear();
                                     DispWarehouse.TextDisplayClear(textLine);
+
+                                    //Boss check
+                                    if (activeEnemy.Name == "Lich")
+                                    {
+                                        lichAlive = false;
+                                        OpeningMenu.SecondStory();
+                                    }
+
                                 }
                                 break;
                             //Run Away

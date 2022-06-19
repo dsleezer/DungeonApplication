@@ -8,74 +8,74 @@ namespace DungeonLibrary
 {
     public class MovementWarehouse
     {
-        public static int MapY(Player player)
+        public static int MapY(int mapY)
         {
-            if (player.Map.MapY == 1)
+            if (mapY == 1)
             {
                 return 40;
             }
-            else if (player.Map.MapY == 2)
+            else if (mapY == 2)
             {
                 return 38;
             }
-            else if (player.Map.MapY == 3)
+            else if (mapY == 3)
             {
                 return 36;
             }
-            else if (player.Map.MapY == 4)
+            else if (mapY == 4)
             {
                 return 34;
             }
-            else if (player.Map.MapY == 5)
+            else if (mapY == 5)
             {
                 return 32;
             }
-            else if (player.Map.MapY == 6)
+            else if (mapY == 6)
             {
                 return 30;
             }
-            else if (player.Map.MapY == 7)
+            else if (mapY == 7)
             {
                 return 28;
             }
             else
                 return 40;
         }
-        public static int MapX(Player player)
+        public static int MapX(int mapX)
         {
-            if (player.Map.MapX == 1)
+            if (mapX == 1)
             {
                 return 117;
             }
-            else if (player.Map.MapX == 2)
+            else if (mapX == 2)
             {
                 return 121;
             }
-            else if (player.Map.MapX == 3)
+            else if (mapX == 3)
             {
                 return 125;
             }
-            else if (player.Map.MapX == 4)
+            else if (mapX == 4)
             {
                 return 129;
             }
-            else if (player.Map.MapX == 5)
+            else if (mapX == 5)
             {
                 return 133;
             }
-            else if (player.Map.MapX == 6)
+            else if (mapX == 6)
             {
                 return 137;
             }
-            else if (player.Map.MapX == 7)
+            else if (mapX == 7)
             {
                 return 141;
             }
-            else if (player.Map.MapX == 8)
+            else if (mapX == 8)
             {
                 return 145;
             }
-            else if (player.Map.MapX == 9)
+            else if (mapX == 9)
             {
                 return 149;
             }
@@ -86,40 +86,45 @@ namespace DungeonLibrary
         }
         public static void MoveNorth(Player player)
         {
-            Console.SetCursorPosition(MapX(player),MapY(player));
+            Console.SetCursorPosition(MapX(player.Map.MapX),MapY(player.Map.MapY));
             Console.Write(" ");
             player.Map.MapY++;
-            Console.SetCursorPosition(MapX(player), MapY(player));
+            Console.SetCursorPosition(MapX(player.Map.MapX), MapY(player.Map.MapY));
             Console.Write("P");
         }
         public static void MoveSouth(Player player)
         {
-            Console.SetCursorPosition(MapX(player),MapY(player));
+            Console.SetCursorPosition(MapX(player.Map.MapX),MapY(player.Map.MapY));
             Console.Write(" ");
             player.Map.MapY--;
-            Console.SetCursorPosition(MapX(player), MapY(player));
+            Console.SetCursorPosition(MapX(player.Map.MapX), MapY(player.Map.MapY));
             Console.Write("P");
         }
         public static void MoveEast(Player player)
         {
-            Console.SetCursorPosition(MapX(player), MapY(player));
+            Console.SetCursorPosition(MapX(player.Map.MapX), MapY(player.Map.MapY));
             Console.Write(" ");
             player.Map.MapX++;
-            Console.SetCursorPosition(MapX(player), MapY(player));
+            Console.SetCursorPosition(MapX(player.Map.MapX), MapY(player.Map.MapY));
             Console.Write("P");
         }
         public static void MoveWest(Player player)
         {
-            Console.SetCursorPosition(MapX(player), MapY(player));
+            Console.SetCursorPosition(MapX(player.Map.MapX), MapY(player.Map.MapY));
             Console.Write(" ");
             player.Map.MapX-= 1;
-            Console.SetCursorPosition(MapX(player), MapY(player));
+            Console.SetCursorPosition(MapX(player.Map.MapX), MapY(player.Map.MapY));
             Console.Write("P");
         }
         public static void CurrentPosition(Player player)
         {
-            Console.SetCursorPosition(MapX(player), MapY(player));
+            Console.SetCursorPosition(MapX(player.Map.MapX), MapY(player.Map.MapY));
             Console.Write("P");
+        }
+        public static void BossPosition(Boss boss)
+        {
+            Console.SetCursorPosition(MapX(boss.Location.MapX), MapY(boss.Location.MapY));
+            Console.Write("T");
         }
 
     }

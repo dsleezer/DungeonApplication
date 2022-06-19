@@ -16,6 +16,8 @@ namespace DungeonLibrary
         /// <returns>Selected Monster</returns>
         public static Monster GenerateMonster(Player player)
         {
+            
+
             Monster flyingcat = new Monster("Flying Cat", 4, 12, 16, 10, 9, 9, 2, 2, 18, 10, 200, "Dexterity", "A housecat with wings.");
             Monster flumph = new Monster("Flumph", 8, 14, 16, 12, 10, 10, 2, 8, 4, 12, 25, "Dexterity", "The childlike whimsy of it hides the\nintent of it's tentacles.");
             Monster kobold = new Monster("Kobold", 8, 8, 16, 10, 11, 11, 3, 7, 4, 12, 25, "Dexterity", "A small humanoid reptile.");
@@ -41,7 +43,7 @@ namespace DungeonLibrary
             Monster treant = new Monster("Treant", 24, 12, 8, 22, 115, 115, 9, 25, 10, 16, 120, "Strength", "This tree seems to have\ncome to life.");
             Monster vampire = new Monster("Vampire", 18, 16, 18, 18, 100, 100, 8, 28, 9, 16, 140, "Strength", "Pale with pointed fangs. It seems to fade into the shadows.");
             Monster hydra = new Monster("Hydra", 20, 2, 12, 20, 140, 140, 12, 30, 8, 15, 180, "Strength", "A three headed serpent with\nsharp teeth.");
-            Monster remorhaz = new Monster("Remorhaz", 24, 4, 14, 22, 160, 16, 13, 35, 11, 17, 200, "Strength", "Hundreds of legs support\nthis massive centipede.");
+            Monster remorhaz = new Monster("Remorhaz", 24, 4, 14, 22, 160, 160, 13, 35, 11, 17, 200, "Strength", "Hundreds of legs support\nthis massive centipede.");
 
             List<Monster> level1 = new List<Monster>() { flyingcat, flumph, kobold, magmin, troglodyt, modron, skeleton };
             List<Monster> level3 = new List<Monster>() { flyingcat, flumph, kobold, magmin, troglodyt, modron, skeleton, hobgoblin, gnoll, dryad, willOWisp, bandit, zombie };
@@ -50,6 +52,7 @@ namespace DungeonLibrary
             List<Monster> level9 = new List<Monster>() { flyingcat, skeleton, zombie, harpy, warewolf, basilisk, griffon, gibberingMouther, troll, gelatinousCube, bulette, couatl, treant };
             List<Monster> level11 = new List<Monster>() { flyingcat, skeleton, zombie, harpy, warewolf, basilisk, griffon, gibberingMouther, troll, gelatinousCube, bulette, couatl, treant, vampire };
             List<Monster> level13 = new List<Monster>() { flyingcat, skeleton, zombie, harpy, warewolf, basilisk, griffon, gibberingMouther, troll, gelatinousCube, bulette, couatl, treant, vampire, hydra, remorhaz };
+
 
             Random roll = new Random();
 
